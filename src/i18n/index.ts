@@ -5,8 +5,8 @@ export type Locale = 'sv' | 'en';
 
 export const translations = { sv, en } as const;
 
-export const SIGNUP_URL = 'https://app.raptix.se/signup';
-export const SIGNIN_URL = 'https://app.raptix.se';
+export const SIGNUP_URL = 'https://reveal.raptix.se/?signup=1';
+export const SIGNIN_URL = 'https://reveal.raptix.se';
 export const PARTNERS_MAILTO = 'mailto:partners@raptix.se';
 
 export function t(locale: Locale) {
