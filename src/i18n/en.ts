@@ -70,8 +70,9 @@ export const en: typeof sv = {
         'No manual exports or CSV uploads',
       ],
       mock: {
-        label: 'Visitors · last 8 weeks · imported',
+        label: 'Visitors · last 8 weeks',
         badge: 'Imported',
+        live: 'Live',
         caption: 'Week 11 — Reveal connected',
       },
     },

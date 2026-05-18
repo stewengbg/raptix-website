@@ -158,33 +158,67 @@ const tr = t(locale);
               ↓ {tr.features.history.mock.badge}
             </span>
           </div>
-          <div class="relative bg-white border border-gray-200 rounded-lg px-3 py-3">
-            <div class="flex items-end gap-1 h-20">
-              {[
-                28, 32, 35, 30, 38, 42, 45,
-                40, 44, 48, 52, 50, 55, 58,
-                52, 56, 60, 64, 68, 70, 72,
-                65, 70, 74, 78, 82, 85, 88,
-                80, 85, 90, 94, 92, 95, 100,
-                88, 92, 95, 90, 98, 100, 95,
-                92, 96, 100, 95, 98, 100, 92,
-                96, 100, 95, 98, 100, 96,
-              ].map((h, i) => {
-                const importedUntil = 49;
-                return (
+          {(() => {
+            const bars = [
+              28, 32, 35, 30, 38, 42, 45,
+              40, 44, 48, 52, 50, 55, 58,
+              52, 56, 60, 64, 68, 70, 72,
+              65, 70, 74, 78, 82, 85, 88,
+              80, 85, 90, 94, 92, 95, 100,
+              88, 92, 95, 90, 98, 100, 95,
+              92, 96, 100, 95, 98, 100, 92,
+              96, 100, 95, 98, 100, 96,
+            ];
+            const importedUntil = 49;
+            const boundaryPct = (importedUntil / bars.length) * 100;
+            return (
+              <div class="bg-white border border-gray-200 rounded-lg px-3 pt-3 pb-3">
+                <!-- annotation rail (above bars, no overlap) -->
+                <div class="relative h-5 mb-1">
                   <div
-                    class:list={[
-                      'flex-1 rounded-t',
-                      i < importedUntil ? 'bg-indigo-300' : 'bg-indigo-600',
-                    ]}
-                    style={`height: ${h}%`}
+                    class="absolute top-3 flex items-center gap-1.5 -translate-x-full pr-1"
+                    style={`left: ${boundaryPct}%`}
+                  >
+                    <span class="text-[9px] text-amber-700 font-semibold whitespace-nowrap">
+                      {tr.features.history.mock.caption}
+                    </span>
+                    <span class="text-amber-500 text-[10px] leading-none">▼</span>
+                  </div>
+                </div>
+
+                <!-- bars + dashed boundary -->
+                <div class="relative">
+                  <div class="flex items-end gap-[2px] h-20">
+                    {bars.map((h, i) => (
+                      <div
+                        class:list={[
+                          'flex-1 rounded-t',
+                          i < importedUntil ? 'bg-indigo-200' : 'bg-indigo-600',
+                        ]}
+                        style={`height: ${h}%`}
+                      ></div>
+                    ))}
+                  </div>
+                  <div
+                    class="absolute top-0 bottom-0 border-l-2 border-dashed border-amber-400 pointer-events-none"
+                    style={`left: ${boundaryPct}%`}
                   ></div>
-                );
-              })}
-            </div>
-            <div class="absolute top-2 right-[12%] h-20 border-l-2 border-dashed border-amber-400"></div>
-            <p class="absolute top-1 right-[6%] text-[9px] text-amber-600 font-bold">{tr.features.history.mock.caption}</p>
-          </div>
+                </div>
+
+                <!-- legend -->
+                <div class="mt-2.5 flex items-center gap-4 text-[9px] text-gray-500">
+                  <span class="flex items-center gap-1.5">
+                    <span class="inline-block w-2.5 h-2.5 rounded-sm bg-indigo-200"></span>
+                    {tr.features.history.mock.badge}
+                  </span>
+                  <span class="flex items-center gap-1.5">
+                    <span class="inline-block w-2.5 h-2.5 rounded-sm bg-indigo-600"></span>
+                    {tr.features.history.mock.live}
+                  </span>
+                </div>
+              </div>
+            );
+          })()}
         </div>
       </div>
     </div>

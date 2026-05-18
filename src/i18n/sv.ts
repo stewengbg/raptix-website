@@ -68,8 +68,9 @@ export const sv = {
         'Inga manuella exporter eller CSV-uppladdningar',
       ],
       mock: {
-        label: 'Besökare · senaste 8 veckorna · importerat',
+        label: 'Besökare · senaste 8 veckorna',
         badge: 'Importerat',
+        live: 'Live',
         caption: 'Vecka 11 — Reveal kopplades in',
       },
     },
