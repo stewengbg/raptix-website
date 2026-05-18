@@ -41,7 +41,7 @@ const tr = t(locale);
         <span class="dot dot-g"></span>
         <span class="ml-3 text-xs text-gray-400">{tr.hero.screenshotUrl}</span>
       </div>
-      <div class="aspect-[16/9] p-5 md:p-6 bg-gradient-to-b from-white to-gray-50 grid grid-cols-4 gap-3 content-start text-xs">
+      <div class="p-5 md:p-6 bg-gradient-to-b from-white to-gray-50 grid grid-cols-4 gap-3 text-xs">
         <div class="bg-white border border-gray-200 rounded-lg px-3 py-2.5">
           <p class="text-[9px] tracking-widest uppercase text-gray-500 font-bold">{tr.hero.kpi.sites}</p>
           <p class="text-[22px] font-extrabold leading-none mt-1">2</p>
@@ -58,6 +58,8 @@ const tr = t(locale);
           <p class="text-[9px] tracking-widest uppercase text-gray-500 font-bold">{tr.hero.kpi.sensors}</p>
           <p class="text-[22px] font-extrabold leading-none mt-1 text-emerald-600">{tr.hero.kpi.healthy}</p>
         </div>
+
+        <!-- Today's hourly bar chart -->
         <div class="col-span-4 bg-white border border-gray-200 rounded-lg px-3 py-2 h-16 flex items-end gap-1">
           {[24, 36, 48, 55, 62, 68, 74, 86, 92, 100, 78, 60, 40, 22].map((h, i) => (
             <div
@@ -68,6 +70,39 @@ const tr = t(locale);
               style={`height: ${h}%`}
             ></div>
           ))}
+        </div>
+
+        <!-- Per-site breakdown row -->
+        <div class="col-span-4 bg-white border border-gray-200 rounded-lg px-3 py-2.5">
+          <p class="text-[9px] tracking-widest uppercase text-gray-500 font-bold">{tr.hero.siteBreakdown}</p>
+          <div class="mt-2 grid grid-cols-2 gap-3">
+            {tr.hero.sites.map(([name, visitors], i) => (
+              <div class="flex items-center justify-between border-l-2 border-indigo-500 pl-2.5">
+                <div>
+                  <p class="font-bold text-[11px] text-gray-900 leading-tight">{name}</p>
+                  <p class="text-[9px] text-gray-500">{visitors} {i === 0 ? '↗' : '→'}</p>
+                </div>
+                <div class="flex items-end gap-0.5 h-5">
+                  {(i === 0 ? [30, 45, 60, 78, 92, 100] : [40, 35, 55, 50, 65, 60]).map((h) => (
+                    <div class="w-1 bg-indigo-300 rounded-t" style={`height: ${h}%`}></div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Imported history strip -->
+        <div class="col-span-4 bg-white border border-gray-200 rounded-lg px-3 py-2.5">
+          <div class="flex items-center justify-between mb-1.5">
+            <p class="text-[9px] tracking-widest uppercase text-gray-500 font-bold">{tr.hero.history}</p>
+            <span class="text-[10px] text-emerald-700 font-bold">↓</span>
+          </div>
+          <div class="flex items-end gap-0.5 h-6">
+            {[42, 48, 38, 55, 60, 52, 58, 65, 70, 62, 68, 72, 80, 75, 82, 88, 78, 70, 65, 72, 80, 78, 85, 90, 82, 75, 88, 92, 86, 95].map((h) => (
+              <div class="flex-1 bg-indigo-300 rounded-t" style={`height: ${h}%`}></div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -100,6 +135,58 @@ const tr = t(locale);
     <div class="text-center mb-12">
       <p class="text-xs font-bold uppercase tracking-widest text-blue-700">{tr.features.eyebrow}</p>
       <h2 class="mt-2 text-3xl md:text-4xl font-extrabold tracking-tight">{tr.features.title}</h2>
+    </div>
+
+    <!-- Feature: Historic data imported on connect -->
+    <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+      <div>
+        <div class="feature-icon">↓</div>
+        <h3 class="mt-4 text-2xl font-bold">{tr.features.history.title}</h3>
+        <p class="mt-3 text-gray-600">{tr.features.history.body}</p>
+        <ul class="mt-4 space-y-2 text-sm text-gray-600">
+          {tr.features.history.bullets.map((b) => <li>· {b}</li>)}
+        </ul>
+      </div>
+      <div class="browser-frame">
+        <div class="browser-bar">
+          <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-3">
+            <p class="text-[11px] font-bold uppercase tracking-widest text-gray-500">{tr.features.history.mock.label}</p>
+            <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+              ↓ {tr.features.history.mock.badge}
+            </span>
+          </div>
+          <div class="relative bg-white border border-gray-200 rounded-lg px-3 py-3">
+            <div class="flex items-end gap-1 h-20">
+              {[
+                28, 32, 35, 30, 38, 42, 45,
+                40, 44, 48, 52, 50, 55, 58,
+                52, 56, 60, 64, 68, 70, 72,
+                65, 70, 74, 78, 82, 85, 88,
+                80, 85, 90, 94, 92, 95, 100,
+                88, 92, 95, 90, 98, 100, 95,
+                92, 96, 100, 95, 98, 100, 92,
+                96, 100, 95, 98, 100, 96,
+              ].map((h, i) => {
+                const importedUntil = 49;
+                return (
+                  <div
+                    class:list={[
+                      'flex-1 rounded-t',
+                      i < importedUntil ? 'bg-indigo-300' : 'bg-indigo-600',
+                    ]}
+                    style={`height: ${h}%`}
+                  ></div>
+                );
+              })}
+            </div>
+            <div class="absolute top-2 right-[12%] h-20 border-l-2 border-dashed border-amber-400"></div>
+            <p class="absolute top-1 right-[6%] text-[9px] text-amber-600 font-bold">{tr.features.history.mock.caption}</p>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Feature 1: Live visitors -->

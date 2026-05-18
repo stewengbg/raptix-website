@@ -30,6 +30,12 @@ export const sv = {
       sensors: 'Sensorstatus',
       healthy: 'Allt grönt',
     },
+    siteBreakdown: 'Per butik · idag',
+    sites: [
+      ['ICA Hovås', '1 023'],
+      ['ICA Sisjön', '715'],
+    ],
+    history: 'Senaste 30 dagarna · importerat vid anslutning',
   },
   how: {
     eyebrow: 'Så fungerar det',
@@ -52,6 +58,21 @@ export const sv = {
   features: {
     eyebrow: 'Funktioner',
     title: 'Allt en Alta-butik behöver för att drivas på siffror.',
+    history: {
+      title: 'Börja inte från noll — historiken är redan där',
+      body: 'När du kopplar in ditt Alta-konto importerar Reveal historisk data från dina räknare. Du loggar in dag ett och ser veckor av besökstrender — inte en tom graf som väntar på att fyllas.',
+      bullets: [
+        'Räknarhistorik hämtas från Alta vid anslutning',
+        'Veckans aktivitetshetta funkar från första dagen',
+        'Jämför idag mot ett verkligt typiskt mönster, inte ett gissat',
+        'Inga manuella exporter eller CSV-uppladdningar',
+      ],
+      mock: {
+        label: 'Besökare · senaste 8 veckorna · importerat',
+        badge: 'Importerat',
+        caption: 'Vecka 11 — Reveal kopplades in',
+      },
+    },
     f1: {
       title: 'Live besökare och beläggning',
       body: 'Timvis besöksflöde mot en typisk fyraveckorsbaseline. En live-takmätare visar om du är på väg mot en vanlig dag — eller en lugn/livlig.',

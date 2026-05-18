@@ -32,6 +32,12 @@ export const en: typeof sv = {
       sensors: 'Sensor health',
       healthy: 'Healthy',
     },
+    siteBreakdown: 'Per site · today',
+    sites: [
+      ['ICA Hovås', '1,023'],
+      ['ICA Sisjön', '715'],
+    ],
+    history: 'Last 30 days · imported on connect',
   },
   how: {
     eyebrow: 'How it works',
@@ -54,6 +60,21 @@ export const en: typeof sv = {
   features: {
     eyebrow: 'Features',
     title: 'Everything an Alta site needs to run on numbers.',
+    history: {
+      title: "Don't start from zero — your history is already here",
+      body: 'When you connect your Alta account, Reveal imports historic counter data. You log in on day one and see weeks of visitor trends — not an empty chart waiting to fill up.',
+      bullets: [
+        'Counter history pulled from Alta on connect',
+        'Hour-of-week heatmap works from day one',
+        "Compare today against a real typical pattern, not a guess",
+        'No manual exports or CSV uploads',
+      ],
+      mock: {
+        label: 'Visitors · last 8 weeks · imported',
+        badge: 'Imported',
+        caption: 'Week 11 — Reveal connected',
+      },
+    },
     f1: {
       title: 'Live visitors and occupancy',
       body: "Hourly footfall against a four-week typical baseline. A real-time pace bar shows whether you're on track for an average day, or on for a quiet/busy one — at a glance.",
