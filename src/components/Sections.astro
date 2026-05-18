@@ -1,0 +1,361 @@
+---
+import type { Locale } from '../i18n';
+import { t, SIGNUP_URL, PARTNERS_MAILTO } from '../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const tr = t(locale);
+---
+
+<!-- HERO -->
+<section class="relative overflow-hidden">
+  <div class="absolute inset-0 glow pointer-events-none"></div>
+  <div class="relative max-w-6xl mx-auto px-6 pt-20 pb-12 text-center">
+    <span class="inline-flex items-center gap-2 pill-soft text-xs font-semibold px-3 py-1 rounded-full">
+      <span class="w-1.5 h-1.5 rounded-full bg-indigo-600"></span>
+      {tr.hero.badge}
+    </span>
+    <h1 class="mt-6 text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.05]">
+      {tr.hero.titleA} <span class="brand-text">{tr.hero.titleHighlight}</span>.
+    </h1>
+    <p class="mt-6 text-lg text-gray-600 max-w-2xl mx-auto">{tr.hero.subtitle}</p>
+    <div class="mt-8 flex items-center justify-center gap-3">
+      <a href={SIGNUP_URL} class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2.5 rounded-lg transition">
+        {tr.hero.ctaPrimary}
+      </a>
+      <a href="#how" class="text-sm font-semibold text-gray-700 hover:text-gray-900 px-3 py-2.5">
+        {tr.hero.ctaSecondary} →
+      </a>
+    </div>
+    <p class="mt-4 text-xs text-gray-400">{tr.hero.trialNote}</p>
+  </div>
+
+  <div class="relative max-w-5xl mx-auto px-6 pb-20">
+    <div class="browser-frame">
+      <div class="browser-bar">
+        <span class="dot dot-r"></span>
+        <span class="dot dot-y"></span>
+        <span class="dot dot-g"></span>
+        <span class="ml-3 text-xs text-gray-400">{tr.hero.screenshotUrl}</span>
+      </div>
+      <div class="aspect-[16/9] p-5 md:p-6 bg-gradient-to-b from-white to-gray-50 grid grid-cols-4 gap-3 content-start text-xs">
+        <div class="bg-white border border-gray-200 rounded-lg px-3 py-2.5">
+          <p class="text-[9px] tracking-widest uppercase text-gray-500 font-bold">{tr.hero.kpi.sites}</p>
+          <p class="text-[22px] font-extrabold leading-none mt-1">2</p>
+        </div>
+        <div class="bg-white border border-gray-200 rounded-lg px-3 py-2.5">
+          <p class="text-[9px] tracking-widest uppercase text-gray-500 font-bold">{tr.hero.kpi.visitors}</p>
+          <p class="text-[22px] font-extrabold leading-none mt-1">1 738 <span class="text-xs text-emerald-600 font-semibold align-middle">+4%</span></p>
+        </div>
+        <div class="bg-white border border-gray-200 rounded-lg px-3 py-2.5">
+          <p class="text-[9px] tracking-widest uppercase text-gray-500 font-bold">{tr.hero.kpi.inStore}</p>
+          <p class="text-[22px] font-extrabold leading-none mt-1">9</p>
+        </div>
+        <div class="bg-white border border-gray-200 rounded-lg px-3 py-2.5">
+          <p class="text-[9px] tracking-widest uppercase text-gray-500 font-bold">{tr.hero.kpi.sensors}</p>
+          <p class="text-[22px] font-extrabold leading-none mt-1 text-emerald-600">{tr.hero.kpi.healthy}</p>
+        </div>
+        <div class="col-span-4 bg-white border border-gray-200 rounded-lg px-3 py-2 h-16 flex items-end gap-1">
+          {[24, 36, 48, 55, 62, 68, 74, 86, 92, 100, 78, 60, 40, 22].map((h, i) => (
+            <div
+              class:list={[
+                'flex-1 rounded-t',
+                i === 9 ? 'bg-indigo-700' : i > 9 ? 'bg-indigo-200/60' : 'bg-indigo-300',
+              ]}
+              style={`height: ${h}%`}
+            ></div>
+          ))}
+        </div>
+      </div>
+    </div>
+    <p class="text-xs text-gray-400 text-center mt-3">{tr.hero.caption}</p>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="border-t border-gray-100 bg-gray-50/60">
+  <div class="max-w-6xl mx-auto px-6 py-8 text-center">
+    <p class="text-[11px] font-bold uppercase tracking-widest text-gray-400">{tr.trust.heading}</p>
+    <div class="mt-4 flex flex-wrap justify-center gap-x-12 gap-y-3 text-gray-300 text-2xl font-black tracking-tight">
+      <span>ICA</span>
+      <span>Avano</span>
+      <span>Logo</span>
+      <span>Logo</span>
+      <span>Logo</span>
+      <span>Logo</span>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" class="max-w-6xl mx-auto px-6 py-20">
+  <div class="text-center mb-12">
+    <p class="text-xs font-bold uppercase tracking-widest text-blue-700">{tr.how.eyebrow}</p>
+    <h2 class="mt-2 text-3xl md:text-4xl font-extrabold tracking-tight">{tr.how.title}</h2>
+    <p class="mt-3 text-gray-600 max-w-2xl mx-auto">{tr.how.subtitle}</p>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-6">
+    {[tr.how.step1, tr.how.step2, tr.how.step3].map((step, i) => (
+      <div class="rounded-xl border border-gray-100 bg-white p-6">
+        <span class="step-num">{i + 1}</span>
+        <h3 class="mt-4 text-lg font-bold">{step.title}</h3>
+        <p class="mt-2 text-sm text-gray-600">{step.body}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="bg-gray-50 border-y border-gray-100">
+  <div class="max-w-6xl mx-auto px-6 py-20">
+    <div class="text-center mb-12">
+      <p class="text-xs font-bold uppercase tracking-widest text-blue-700">{tr.features.eyebrow}</p>
+      <h2 class="mt-2 text-3xl md:text-4xl font-extrabold tracking-tight">{tr.features.title}</h2>
+    </div>
+
+    <!-- Feature 1: Live visitors -->
+    <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+      <div>
+        <div class="feature-icon">⌁</div>
+        <h3 class="mt-4 text-2xl font-bold">{tr.features.f1.title}</h3>
+        <p class="mt-3 text-gray-600">{tr.features.f1.body}</p>
+        <ul class="mt-4 space-y-2 text-sm text-gray-600">
+          {tr.features.f1.bullets.map((b) => <li>· {b}</li>)}
+        </ul>
+      </div>
+      <div class="browser-frame">
+        <div class="browser-bar">
+          <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+        </div>
+        <div class="p-6">
+          <p class="text-[11px] font-bold uppercase tracking-widest text-gray-500">{tr.features.f1.mock.label}</p>
+          <div class="flex items-end gap-1 h-16 mt-3 bg-white border border-gray-200 rounded-lg px-3 py-2">
+            {[24, 36, 48, 55, 62, 68, 74, 86, 92, 100, 78, 60, 40].map((h, i) => (
+              <div
+                class:list={[
+                  'flex-1 rounded-t',
+                  i === 9 ? 'bg-indigo-700' : i > 9 ? 'bg-indigo-200/60' : 'bg-indigo-300',
+                ]}
+                style={`height: ${h}%`}
+              ></div>
+            ))}
+          </div>
+          <div class="mt-4 flex items-center gap-3 text-xs">
+            <span class="pill-soft px-2 py-0.5 rounded-full font-semibold">{tr.features.f1.mock.pill}</span>
+            <span class="text-gray-500">{tr.features.f1.mock.text}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature 2: Sensors -->
+    <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+      <div class="order-2 md:order-1 browser-frame">
+        <div class="browser-bar">
+          <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+        </div>
+        <div class="p-6">
+          <div class="bg-red-50 border border-red-100 rounded-lg p-3 text-xs">
+            <p class="font-bold text-red-800">{tr.features.f2.mock.alertTitle}</p>
+            <p class="text-red-700 mt-1">{tr.features.f2.mock.alertBody}</p>
+          </div>
+          <div class="mt-3 grid grid-cols-2 gap-2 text-xs">
+            {tr.features.f2.mock.tiles.map(([label, value]) => (
+              <div class="bg-white border border-gray-200 rounded-lg p-2.5">
+                <p class="text-gray-400 uppercase tracking-wider font-bold text-[10px]">{label}</p>
+                <p class="font-bold mt-1">{value}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div class="order-1 md:order-2">
+        <div class="feature-icon">❄</div>
+        <h3 class="mt-4 text-2xl font-bold">{tr.features.f2.title}</h3>
+        <p class="mt-3 text-gray-600">{tr.features.f2.body}</p>
+        <ul class="mt-4 space-y-2 text-sm text-gray-600">
+          {tr.features.f2.bullets.map((b) => <li>· {b}</li>)}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Feature 3: In-store screens -->
+    <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+      <div>
+        <div class="feature-icon">▥</div>
+        <h3 class="mt-4 text-2xl font-bold">{tr.features.f3.title}</h3>
+        <p class="mt-3 text-gray-600">{tr.features.f3.body}</p>
+      </div>
+      <div class="browser-frame bg-gray-900">
+        <div class="browser-bar bg-gray-800 border-gray-700">
+          <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+        </div>
+        <div class="p-8 text-white">
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-gray-800 rounded-lg p-4">
+              <p class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">{tr.features.f3.mock.visitors}</p>
+              <p class="text-5xl font-black mt-1">1 738</p>
+            </div>
+            <div class="bg-gray-800 rounded-lg p-4">
+              <p class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">{tr.features.f3.mock.inStore}</p>
+              <p class="text-5xl font-black mt-1">9</p>
+            </div>
+            <div class="bg-gray-800 rounded-lg p-4 col-span-2">
+              <p class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">{tr.features.f3.mock.queue}</p>
+              <p class="text-5xl font-black mt-1 text-emerald-400">
+                0 <span class="text-base text-gray-400 font-medium">{tr.features.f3.mock.normal}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Small feature trio -->
+    <div class="grid md:grid-cols-3 gap-6">
+      {[tr.features.f4, tr.features.f5, tr.features.f6].map((feat, i) => (
+        <div class="rounded-xl bg-white border border-gray-100 p-6">
+          <div class="feature-icon">{['📊', '🏷', '🔒'][i]}</div>
+          <h3 class="mt-4 text-lg font-bold">{feat.title}</h3>
+          <p class="mt-2 text-sm text-gray-600">{feat.body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<section id="partners" class="max-w-6xl mx-auto px-6 py-20">
+  <div class="grid md:grid-cols-2 gap-12 items-center">
+    <div>
+      <p class="text-xs font-bold uppercase tracking-widest text-blue-700">{tr.partners.eyebrow}</p>
+      <h2 class="mt-2 text-3xl md:text-4xl font-extrabold tracking-tight">{tr.partners.title}</h2>
+      <p class="mt-4 text-gray-600">{tr.partners.body}</p>
+      <ul class="mt-5 space-y-3 text-sm text-gray-700">
+        {tr.partners.bullets.map((b) => (
+          <li class="flex gap-2"><span class="text-blue-600 font-bold">✓</span> {b}</li>
+        ))}
+      </ul>
+      <a
+        href={PARTNERS_MAILTO}
+        class="inline-flex items-center gap-2 mt-6 bg-gray-900 hover:bg-gray-800 text-white font-semibold px-5 py-2.5 rounded-lg transition"
+      >
+        {tr.partners.cta} →
+      </a>
+    </div>
+    <div class="browser-frame">
+      <div class="browser-bar">
+        <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+        <span class="ml-3 text-xs text-gray-400">{tr.partners.portalDomain}</span>
+      </div>
+      <div class="bg-white p-8">
+        <div class="flex items-center justify-between border-b border-gray-100 pb-4">
+          <p class="text-xl font-black tracking-tight text-gray-900">CLOUDSEC</p>
+          <p class="text-xs text-gray-400">{tr.partners.poweredBy}</p>
+        </div>
+        <div class="mt-5 grid grid-cols-3 gap-3 text-xs">
+          {tr.partners.portalKpis.map(([label, value, color]) => (
+            <div class="bg-gray-50 border border-gray-200 rounded-lg p-3">
+              <p class="text-gray-400 uppercase tracking-wider font-bold text-[10px]">{label}</p>
+              <p class={`font-bold mt-1 text-xl ${color}`}>{value}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="bg-gray-900 text-white">
+  <div class="max-w-6xl mx-auto px-6 py-20">
+    <div class="text-center mb-12">
+      <p class="text-xs font-bold uppercase tracking-widest text-blue-400">{tr.pricing.eyebrow}</p>
+      <h2 class="mt-2 text-3xl md:text-4xl font-extrabold tracking-tight">{tr.pricing.title}</h2>
+      <p class="mt-3 text-gray-300 max-w-xl mx-auto">{tr.pricing.subtitle}</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+      <!-- Starter monthly -->
+      <div class="bg-gray-800 rounded-2xl p-6 border border-gray-700">
+        <p class="text-sm font-semibold text-gray-300">{tr.pricing.starter.name} — {tr.pricing.monthly}</p>
+        <p class="mt-3">
+          <span class="text-4xl font-extrabold">{tr.pricing.starter.priceMonthly}</span>
+          <span class="text-gray-400 text-sm">{tr.pricing.starter.perMonth}</span>
+        </p>
+        <p class="text-xs text-gray-400 mt-1">&nbsp;</p>
+        <ul class="mt-5 space-y-2 text-sm text-gray-300">
+          {tr.pricing.starter.features.map((f) => <li>· {f}</li>)}
+        </ul>
+        <a
+          href={SIGNUP_URL}
+          class="block mt-6 text-center bg-white text-gray-900 font-semibold py-2.5 rounded-lg hover:bg-gray-100 transition"
+        >
+          {tr.pricing.starter.cta}
+        </a>
+      </div>
+
+      <!-- Starter annual (featured) -->
+      <div class="bg-gradient-to-b from-blue-600 to-blue-700 rounded-2xl p-6 border border-blue-500 relative">
+        <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-400 text-amber-950 text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full">
+          {tr.pricing.annualSave}
+        </span>
+        <p class="text-sm font-semibold text-blue-100">{tr.pricing.starter.name} — {tr.pricing.annual}</p>
+        <p class="mt-3">
+          <span class="text-4xl font-extrabold">{tr.pricing.starter.priceAnnual}</span>
+          <span class="text-blue-100 text-sm">{tr.pricing.starter.perMonth}</span>
+        </p>
+        <p class="text-xs text-blue-100 mt-1">{tr.pricing.starter.annualNote}</p>
+        <ul class="mt-5 space-y-2 text-sm text-blue-50">
+          {tr.pricing.starter.features.map((f) => <li>· {f}</li>)}
+        </ul>
+        <a
+          href={SIGNUP_URL}
+          class="block mt-6 text-center bg-white text-blue-700 font-semibold py-2.5 rounded-lg hover:bg-gray-100 transition"
+        >
+          {tr.pricing.starter.cta}
+        </a>
+      </div>
+    </div>
+
+    <!-- Partner row -->
+    <div class="max-w-3xl mx-auto mt-6">
+      <div class="bg-gray-800 rounded-2xl p-6 border border-gray-700 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <div>
+          <p class="text-sm font-semibold text-gray-300">{tr.pricing.partner.name}</p>
+          <p class="text-2xl font-extrabold mt-1">{tr.pricing.partner.price}</p>
+          <p class="text-xs text-gray-400 mt-1">{tr.pricing.partner.note}</p>
+        </div>
+        <ul class="flex-1 grid grid-cols-2 gap-x-4 gap-y-1 text-sm text-gray-300">
+          {tr.pricing.partner.features.map((f) => <li>· {f}</li>)}
+        </ul>
+        <a
+          href={PARTNERS_MAILTO}
+          class="text-center bg-white text-gray-900 font-semibold px-5 py-2.5 rounded-lg hover:bg-gray-100 transition shrink-0"
+        >
+          {tr.pricing.partner.cta}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="border-t border-gray-100">
+  <div class="max-w-3xl mx-auto px-6 py-16 text-center">
+    <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">
+      {tr.finalCta.titleA} <span class="brand-text">{tr.finalCta.titleHighlight}</span>{tr.finalCta.titleB}
+    </h2>
+    <p class="mt-4 text-gray-600">{tr.finalCta.body}</p>
+    <a
+      href={SIGNUP_URL}
+      class="inline-block mt-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition"
+    >
+      {tr.finalCta.cta}
+    </a>
+  </div>
+</section>

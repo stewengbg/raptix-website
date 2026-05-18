@@ -1,0 +1,105 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import type { Locale } from '../i18n';
+import { t } from '../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const tr = t(locale);
+---
+
+<!doctype html>
+<html lang={locale} class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/raptix-favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={tr.meta.description} />
+    <meta property="og:title" content={tr.meta.title} />
+    <meta property="og:description" content={tr.meta.description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={`https://www.raptix.se${locale === 'sv' ? '/' : '/en/'}`} />
+    <link rel="alternate" hreflang="sv" href="https://www.raptix.se/" />
+    <link rel="alternate" hreflang="en" href="https://www.raptix.se/en/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.raptix.se/" />
+    <title>{tr.meta.title}</title>
+  </head>
+  <body class="bg-white text-gray-900 antialiased">
+    <Header locale={locale} />
+    <slot />
+    <Footer locale={locale} />
+    <style is:global>
+      :root {
+        font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      }
+      .brand-text {
+        background: linear-gradient(135deg, #1e3a8a, #2563eb);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .glow {
+        background: radial-gradient(60% 60% at 50% 0%, rgba(37, 99, 235, 0.18) 0%, rgba(255, 255, 255, 0) 70%);
+      }
+      .browser-frame {
+        border-radius: 12px;
+        background: white;
+        box-shadow:
+          0 30px 60px -20px rgba(15, 23, 42, 0.25),
+          0 18px 36px -18px rgba(15, 23, 42, 0.15);
+        border: 1px solid #e5e7eb;
+        overflow: hidden;
+      }
+      .browser-bar {
+        background: #f9fafb;
+        border-bottom: 1px solid #e5e7eb;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 10px 14px;
+      }
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 9999px;
+      }
+      .dot-r { background: #f87171; }
+      .dot-y { background: #fbbf24; }
+      .dot-g { background: #34d399; }
+      .pill-soft {
+        background: #eef2ff;
+        color: #3730a3;
+        border: 1px solid #c7d2fe;
+      }
+      .step-num {
+        width: 32px;
+        height: 32px;
+        border-radius: 9999px;
+        background: #4338ca;
+        color: white;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 14px;
+      }
+      .feature-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        background: #eef2ff;
+        color: #4338ca;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+      }
+    </style>
+  </body>
+</html>
