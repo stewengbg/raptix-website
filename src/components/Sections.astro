@@ -137,7 +137,57 @@ const tr = t(locale);
       </div>
     </div>
 
-    <!-- Feature 2: Sensors -->
+    <!-- Feature: Insights & forecasting (heatmap) -->
+    <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+      <div class="order-2 md:order-1 browser-frame">
+        <div class="browser-bar">
+          <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+        </div>
+        <div class="p-6">
+          <p class="text-[11px] font-bold uppercase tracking-widest text-gray-500">{tr.features.insights.mock.label}</p>
+          <div class="mt-3 grid grid-cols-[auto_repeat(14,minmax(0,1fr))] gap-1 text-[9px] text-gray-400">
+            <div></div>
+            {['06', '08', '10', '12', '14', '16', '18', '20', '06', '10', '14', '18', '12', '18'].slice(0, 14).map((h) => (
+              <div class="text-center font-semibold">{h}</div>
+            ))}
+            {tr.features.insights.mock.days.map((day, rowIdx) => (
+              <>
+                <div class="pr-2 text-right font-semibold text-gray-500 self-center">{day}</div>
+                {Array.from({ length: 14 }).map((_, colIdx) => {
+                  const seed = (rowIdx * 7 + colIdx * 3) % 11;
+                  const intensity = [10, 15, 25, 40, 55, 70, 85, 95, 80, 60, 30][seed];
+                  return (
+                    <div
+                      class="aspect-square rounded-sm"
+                      style={`background-color: rgba(67, 56, 202, ${intensity / 100})`}
+                    ></div>
+                  );
+                })}
+              </>
+            ))}
+          </div>
+          <div class="mt-4 flex items-center gap-3 text-[10px] text-gray-500">
+            <span>{tr.features.insights.mock.legend[0]}</span>
+            <div class="flex gap-0.5">
+              {[10, 25, 50, 75, 95].map((i) => (
+                <div class="w-3 h-3 rounded-sm" style={`background-color: rgba(67, 56, 202, ${i / 100})`}></div>
+              ))}
+            </div>
+            <span>{tr.features.insights.mock.legend[2]}</span>
+          </div>
+        </div>
+      </div>
+      <div class="order-1 md:order-2">
+        <div class="feature-icon">⊞</div>
+        <h3 class="mt-4 text-2xl font-bold">{tr.features.insights.title}</h3>
+        <p class="mt-3 text-gray-600">{tr.features.insights.body}</p>
+        <ul class="mt-4 space-y-2 text-sm text-gray-600">
+          {tr.features.insights.bullets.map((b) => <li>· {b}</li>)}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Feature 2: HACCP temperature monitoring -->
     <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
       <div class="order-2 md:order-1 browser-frame">
         <div class="browser-bar">
@@ -165,6 +215,54 @@ const tr = t(locale);
         <ul class="mt-4 space-y-2 text-sm text-gray-600">
           {tr.features.f2.bullets.map((b) => <li>· {b}</li>)}
         </ul>
+      </div>
+    </div>
+
+    <!-- Feature: HACCP Reports deep-dive -->
+    <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+      <div>
+        <div class="feature-icon">📄</div>
+        <h3 class="mt-4 text-2xl font-bold">{tr.features.reports.title}</h3>
+        <p class="mt-3 text-gray-600">{tr.features.reports.body}</p>
+        <ul class="mt-4 space-y-2 text-sm text-gray-600">
+          {tr.features.reports.bullets.map((b) => <li>· {b}</li>)}
+        </ul>
+      </div>
+      <div class="browser-frame">
+        <div class="browser-bar">
+          <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+          <span class="ml-3 text-xs text-gray-400">app.raptix.se/reports/haccp-w18.pdf</span>
+        </div>
+        <div class="p-6 bg-white">
+          <div class="flex items-start justify-between border-b border-gray-200 pb-3">
+            <div>
+              <p class="font-bold text-gray-900">{tr.features.reports.mock.title}</p>
+              <p class="text-xs text-gray-500 mt-0.5">{tr.features.reports.mock.subtitle}</p>
+            </div>
+            <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 border border-emerald-200">HACCP</span>
+          </div>
+          <table class="w-full mt-4 text-xs">
+            <tbody>
+              {tr.features.reports.mock.rows.map(([sensor, status, range]) => (
+                <tr class="border-b border-gray-100">
+                  <td class="py-2 font-semibold text-gray-700">{sensor}</td>
+                  <td class="py-2 text-gray-500">{range}</td>
+                  <td
+                    class:list={[
+                      'py-2 text-right font-semibold',
+                      status.toString().includes('1') || status.toString().toLowerCase().includes('breach') || status.toString().toLowerCase().includes('avvik')
+                        ? 'text-amber-600'
+                        : 'text-emerald-600',
+                    ]}
+                  >
+                    {status}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <p class="mt-3 text-[11px] text-gray-500 italic">{tr.features.reports.mock.footer}</p>
+        </div>
       </div>
     </div>
 
@@ -202,9 +300,9 @@ const tr = t(locale);
 
     <!-- Small feature trio -->
     <div class="grid md:grid-cols-3 gap-6">
-      {[tr.features.f4, tr.features.f5, tr.features.f6].map((feat, i) => (
+      {[tr.features.f5, tr.features.f6, tr.features.f7].map((feat, i) => (
         <div class="rounded-xl bg-white border border-gray-100 p-6">
-          <div class="feature-icon">{['📊', '🏷', '🔒'][i]}</div>
+          <div class="feature-icon">{['🏷', '🔒', '☀'][i]}</div>
           <h3 class="mt-4 text-lg font-bold">{feat.title}</h3>
           <p class="mt-2 text-sm text-gray-600">{feat.body}</p>
         </div>

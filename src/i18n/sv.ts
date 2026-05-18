@@ -66,23 +66,62 @@ export const sv = {
         text: 'På väg mot ~1 834 besökare till stängning',
       },
     },
-    f2: {
-      title: 'Miljö- och sensorövervakning',
-      body: 'Varje kyl, frys och rumssensor på dina Alta-enheter, med rollbaserade gränsvärden (Kyl / Frys / Rum / Anpassad). Avvikelser visas direkt och hamnar i handelsdagens efterlevnadsrapport.',
+    insights: {
+      title: 'Insikter och prognoser',
+      body: 'Förstå dina butiksmönster — inte bara dagens siffror. Veckans aktivitetshetta visar exakt när du är mest belastad. Väderkorrelation hjälper dig bemanna rätt nästa fredag, inte nästa månad.',
       bullets: [
+        'Aktivitetshetta per timme och veckodag — senaste 7, 28 eller 90 dagarna',
+        'Köanalys: när bygger kassakön längst kö och varför',
+        'Väderkorrelation via SMHI — se hur regn och kyla påverkar besök',
+        'Beläggningsfördelning för att hitta normalen',
+      ],
+      mock: {
+        label: 'Aktivitet per timme · senaste 28 dagarna',
+        legend: ['Lugnt', 'Genomsnitt', 'Livligt'],
+        days: ['Mån', 'Tis', 'Ons', 'Tor', 'Fre', 'Lör', 'Sön'],
+      },
+    },
+    f2: {
+      title: 'HACCP-temperaturövervakning som sköter sig själv',
+      body: 'Varje kyl, frys och rumssensor från dina Alta-enheter loggas dygnet runt. Avvikelser larmas direkt och hamnar i en HACCP-redo PDF — perfekt för egenkontrollen och Livsmedelsverkets inspektion.',
+      bullets: [
+        'Rollbaserade gränsvärden (Kyl / Frys / Rum / Anpassad) — sätts en gång',
         'Hysteres och eskalering — du blir inte pingad för ett 30-sekunders glapp',
-        'Händelselogg med start, peak, varaktighet och åtgärd',
-        'Efterlevnadsrapport som PDF, schemalagd eller på begäran',
+        'Händelselogg med start, peak, varaktighet och åtgärd — full revisionsspår',
+        'HACCP-rapport som PDF, schemalagd eller på begäran',
+        'Data lagras enligt branschpraxis — uppfyller egenkontrollkrav',
       ],
       mock: {
         alertTitle: '1 sensor över kritisk gräns',
-        alertBody: 'Ägg · Temperatur 20,4°C > 17,0°C',
+        alertBody: 'Ägg · Temperatur 20,4°C > 17,0°C · loggat 14:32',
         tiles: [
           ['Kyl — kött', '4,2 °C'],
           ['Frys', '-19 °C'],
           ['Rumstemp', '22,5 °C'],
           ['Luftfuktighet', '47%'],
         ],
+      },
+    },
+    reports: {
+      title: 'Rapporter du faktiskt kan skicka in',
+      body: 'Schemalagda handels- och HACCP-rapporter mejlas till rätt person varje vecka eller månad. Inga manuella loggböcker, ingen panik före revisionen — bara en PDF att vidarebefordra.',
+      bullets: [
+        'HACCP-temperaturrapport — alla sensorer, alla avvikelser, alla åtgärder',
+        'Handelsrapport — besökare, kö, peak-tider per butik',
+        'Schemalagd vecko- eller månadsleverans via mejl',
+        'Anpassade perioder för revisorn eller chefen',
+        'Allt arkiverat i appen — ladda ner när som helst',
+      ],
+      mock: {
+        title: 'HACCP-rapport · Vecka 18',
+        subtitle: 'ICA Hovås · Genererad 2026-05-05',
+        rows: [
+          ['Kyl — kött', 'Inom gräns', '2-6°C'],
+          ['Kyl — mejeri', 'Inom gräns', '2-6°C'],
+          ['Frys', 'Inom gräns', '< -18°C'],
+          ['Kyl — ägg', '1 avvikelse', '2-6°C'],
+        ],
+        footer: '0 öppna avvikelser · klart för egenkontroll',
       },
     },
     f3: {
@@ -95,9 +134,9 @@ export const sv = {
         normal: '— normalt',
       },
     },
-    f4: { title: 'Rapporter', body: 'Vecko- och månadsrapporter för besökare och miljöefterlevnad — schemalagda via mejl, arkiverade i appen.' },
     f5: { title: 'Återförsäljarbranding', body: 'White-labela toppmenyn med din logga. Dina kunder ser ditt varumärke, inte vårt. Per återförsäljare, ett klick.' },
     f6: { title: 'Roll-baserad behörighet', body: 'Ägare / admin / läsare per kund. Återförsäljar- och leverantörsroller ovanpå. Stripe-stödd provperiod och fakturering.' },
+    f7: { title: 'SMHI väderdata', body: 'Realtidsväder för varje butiks plats — korrelerat med besök så du förstår varför fredagen var lugn (eller livlig).' },
   },
   partners: {
     eyebrow: 'För partner',

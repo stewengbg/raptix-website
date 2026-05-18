@@ -68,23 +68,62 @@ export const en: typeof sv = {
         text: 'On pace for ~1,834 visitors by close',
       },
     },
-    f2: {
-      title: 'Environmental sensor monitoring',
-      body: 'Every fridge, freezer and ambient sensor on your Alta devices, with role-based thresholds (Fridge / Freezer / Ambient / Custom). Breaches surface immediately and land in the trading-day compliance report.',
+    insights: {
+      title: 'Insights and forecasting',
+      body: "Understand your store's patterns — not just today's numbers. Hour-of-week heatmap shows exactly when you're busiest. Weather correlation helps you staff for next Friday, not next month.",
       bullets: [
+        'Hour-of-week activity heatmap — last 7, 28 or 90 days',
+        'Queue analysis: when checkout lines build, and why',
+        'Weather correlation via SMHI — see how rain and cold drive footfall',
+        'Occupancy distribution to find your normal',
+      ],
+      mock: {
+        label: 'Hourly activity · last 28 days',
+        legend: ['Quiet', 'Average', 'Busy'],
+        days: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      },
+    },
+    f2: {
+      title: 'HACCP temperature monitoring on autopilot',
+      body: 'Every fridge, freezer and ambient sensor on your Alta devices logged 24/7. Breaches alert immediately and roll up into a HACCP-ready PDF — perfect for daily food-safety records and inspector visits.',
+      bullets: [
+        'Role-based thresholds (Fridge / Freezer / Ambient / Custom) — set once',
         "Hysteresis and escalation so you don't get pinged for a 30-second blip",
-        'Episode log with start, peak, duration, resolution',
-        'Environmental compliance PDF, scheduled or on demand',
+        'Episode log with start, peak, duration, resolution — full audit trail',
+        'HACCP-ready PDF report, scheduled or on demand',
+        'Data retained to industry standards — meets food-safety record-keeping rules',
       ],
       mock: {
         alertTitle: '1 sensor above critical limit',
-        alertBody: 'Eggs · Temperature 20.4°C > 17.0°C',
+        alertBody: 'Eggs · Temperature 20.4°C > 17.0°C · logged 14:32',
         tiles: [
           ['Fridge — meat', '4.2 °C'],
           ['Freezer', '-19 °C'],
           ['Ambient', '22.5 °C'],
           ['Humidity', '47%'],
         ],
+      },
+    },
+    reports: {
+      title: 'Reports you can actually file',
+      body: 'Scheduled trading and HACCP reports land in the right inbox every week or month. No paper log books, no pre-inspection panic — just a PDF to forward on.',
+      bullets: [
+        'HACCP temperature report — every sensor, every breach, every action',
+        'Trading report — visitors, queue, peak hours per site',
+        'Scheduled weekly or monthly delivery by email',
+        'Custom periods for auditors or head office',
+        'All archived in-app — download whenever',
+      ],
+      mock: {
+        title: 'HACCP report · Week 18',
+        subtitle: 'ICA Hovås · Generated 2026-05-05',
+        rows: [
+          ['Fridge — meat', 'In range', '2-6°C'],
+          ['Fridge — dairy', 'In range', '2-6°C'],
+          ['Freezer', 'In range', '< -18°C'],
+          ['Fridge — eggs', '1 breach', '2-6°C'],
+        ],
+        footer: '0 open breaches · ready to file',
       },
     },
     f3: {
@@ -97,9 +136,9 @@ export const en: typeof sv = {
         normal: '— normal',
       },
     },
-    f4: { title: 'Reports', body: 'Weekly and monthly footfall and environmental compliance — scheduled by email, archived in-app.' },
     f5: { title: 'Reseller branding', body: 'White-label the top bar with your logo. Customers see your brand, not ours. Per reseller, one click.' },
     f6: { title: 'Role-based access', body: 'Owner / admin / viewer per tenant. Reseller and vendor scopes on top. Stripe-backed trial and billing.' },
+    f7: { title: 'SMHI weather data', body: "Real-time weather for each site's location — correlated with footfall so you know why Friday was quiet (or busy)." },
   },
   partners: {
     eyebrow: 'For partners',
