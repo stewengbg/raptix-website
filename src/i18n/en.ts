@@ -165,7 +165,7 @@ export const en: typeof sv = {
   partners: {
     eyebrow: 'For partners',
     title: 'Sell Reveal as your own.',
-    body: "If you're an Avigilon Alta integrator, Reveal is your add-on. White-label the UI with your logo, manage your customer tenants from one console, and earn margin on every seat.",
+    body: "If you're an Avigilon Alta integrator, Reveal is your add-on. White-label the UI with your logo and manage your customer tenants from one console.",
     bullets: [
       'Reseller-scoped admin console — see only your customers',
       "Your logo replaces Reveal's wordmark in every customer's UI",

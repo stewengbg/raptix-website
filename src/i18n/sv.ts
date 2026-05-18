@@ -163,7 +163,7 @@ export const sv = {
   partners: {
     eyebrow: 'För partner',
     title: 'Sälj Reveal som din egen.',
-    body: 'Är du Avigilon Alta-integratör? Reveal är ditt tilläggserbjudande. White-labela gränssnittet med din logga, hantera dina kunders konton från en konsol och tjäna marginal på varje plats.',
+    body: 'Är du Avigilon Alta-integratör? Reveal är ditt tilläggserbjudande. White-labela gränssnittet med din logga och hantera dina kunders konton från en konsol.',
     bullets: [
       'Återförsäljar-konsol — du ser bara dina kunder',
       'Din logga ersätter Reveals i varje kunds gränssnitt',
