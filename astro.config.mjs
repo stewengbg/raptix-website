@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://www.raptix.se',
@@ -17,4 +18,19 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+
+  integrations: [
+    sitemap({
+      i18n: {
+        defaultLocale: 'sv',
+        locales: {
+          sv: 'sv-SE',
+          en: 'en-GB',
+        },
+      },
+      changefreq: 'monthly',
+      priority: 0.9,
+      lastmod: new Date(),
+    }),
+  ],
 });

@@ -1,8 +1,8 @@
 export const sv = {
   meta: {
-    title: 'Reveal — Besöksanalys för Avigilon Alta',
+    title: 'Reveal — Besöksanalys & HACCP-rapporter för Avigilon Alta',
     description:
-      'Reveal omvandlar metadata från Avigilon Alta Video Security till besöksstatistik, sensorövervakning och rapporter i realtid — utan ny hårdvara.',
+      'Förvandla dina Avigilon Alta-kameror till en analysplattform: besökare live, kö, HACCP-rapporter och insikter — utan ny hårdvara. 30 dagar gratis.',
   },
   nav: {
     how: 'Så fungerar det',

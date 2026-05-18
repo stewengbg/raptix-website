@@ -2,9 +2,9 @@ import type { sv } from './sv';
 
 export const en: typeof sv = {
   meta: {
-    title: 'Reveal — Visitor analytics for Avigilon Alta',
+    title: 'Reveal — Visitor analytics & HACCP reports for Avigilon Alta',
     description:
-      'Reveal turns Avigilon Alta Video Security metadata into live visitor statistics, sensor monitoring and reports — without installing a single new camera.',
+      'Turn your Avigilon Alta cameras into a retail insight engine: live visitors, queue, HACCP reports and forecasts — no new hardware. 30-day free trial.',
   },
   nav: {
     how: 'How it works',

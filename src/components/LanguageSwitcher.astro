@@ -16,9 +16,24 @@ const currentLabel = locale === 'sv' ? 'SV' : 'EN';
   <span class="px-2.5 py-1 bg-gray-900 text-white">{currentLabel}</span>
   <a
     href={otherHref}
+    data-lang-switch
     class="px-2.5 py-1 text-gray-500 hover:text-gray-900 hover:bg-gray-50 transition"
     aria-label={`Switch to ${otherLabel}`}
+    hreflang={otherLocale}
   >
     {otherLabel}
   </a>
 </div>
+
+<script>
+  // Preserve hash fragment when switching languages so jumping from /en/#pricing
+  // lands you on /#pricing rather than the top of the page.
+  document.querySelectorAll<HTMLAnchorElement>('a[data-lang-switch]').forEach((a) => {
+    a.addEventListener('click', (e) => {
+      if (window.location.hash) {
+        e.preventDefault();
+        window.location.href = a.getAttribute('href')! + window.location.hash;
+      }
+    });
+  });
+</script>

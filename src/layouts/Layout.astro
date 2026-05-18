@@ -11,24 +11,96 @@ interface Props {
 
 const { locale } = Astro.props;
 const tr = t(locale);
+
+const siteUrl = 'https://www.raptix.se';
+const canonical = `${siteUrl}${locale === 'sv' ? '/' : '/en/'}`;
+const ogImage = `${siteUrl}/dashboard.png`;
+const ogLocale = locale === 'sv' ? 'sv_SE' : 'en_GB';
+const altLocale: Locale = locale === 'sv' ? 'en' : 'sv';
+const ogAltLocale = altLocale === 'sv' ? 'sv_SE' : 'en_GB';
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Raptix AB',
+  url: siteUrl,
+  logo: `${siteUrl}/raptix-favicon.png`,
+  email: 'hello@raptix.se',
+  sameAs: ['https://raptix.se'],
+};
+
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Reveal',
+  applicationCategory: 'BusinessApplication',
+  applicationSubCategory: 'Retail Analytics',
+  operatingSystem: 'Web',
+  description: tr.meta.description,
+  url: canonical,
+  image: ogImage,
+  publisher: {
+    '@type': 'Organization',
+    name: 'Raptix AB',
+    url: siteUrl,
+  },
+  offers: {
+    '@type': 'Offer',
+    price: '30',
+    priceCurrency: 'USD',
+    priceSpecification: {
+      '@type': 'UnitPriceSpecification',
+      price: '30',
+      priceCurrency: 'USD',
+      unitText: 'MONTH',
+    },
+    availability: 'https://schema.org/InStock',
+  },
+};
 ---
 
 <!doctype html>
 <html lang={locale} class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="/raptix-favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#2563eb" />
+    <meta name="color-scheme" content="light" />
+
+    <title>{tr.meta.title}</title>
     <meta name="description" content={tr.meta.description} />
+
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="sv" href={`${siteUrl}/`} />
+    <link rel="alternate" hreflang="en" href={`${siteUrl}/en/`} />
+    <link rel="alternate" hreflang="x-default" href={`${siteUrl}/`} />
+
+    <link rel="icon" type="image/png" href="/raptix-favicon.png" />
+    <link rel="apple-touch-icon" href="/raptix-favicon.png" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Reveal — Raptix AB" />
     <meta property="og:title" content={tr.meta.title} />
     <meta property="og:description" content={tr.meta.description} />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={`https://www.raptix.se${locale === 'sv' ? '/' : '/en/'}`} />
-    <link rel="alternate" hreflang="sv" href="https://www.raptix.se/" />
-    <link rel="alternate" hreflang="en" href="https://www.raptix.se/en/" />
-    <link rel="alternate" hreflang="x-default" href="https://www.raptix.se/" />
-    <title>{tr.meta.title}</title>
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={tr.meta.title} />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:locale:alternate" content={ogAltLocale} />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={tr.meta.title} />
+    <meta name="twitter:description" content={tr.meta.description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Structured data -->
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+
+    <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
   </head>
   <body class="bg-white text-gray-900 antialiased">
     <Header locale={locale} />
