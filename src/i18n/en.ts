@@ -33,9 +33,6 @@ export const en: typeof sv = {
       healthy: 'Healthy',
     },
   },
-  trust: {
-    heading: 'Trusted by retailers running Avigilon Alta',
-  },
   how: {
     eyebrow: 'How it works',
     title: 'Three steps from camera to insight.',
@@ -115,7 +112,7 @@ export const en: typeof sv = {
       'First-line support tooling for your team',
     ],
     cta: 'Become a partner',
-    portalDomain: 'partner.cloudsec.example/overview',
+    portalDomain: 'partner.reseller.example/overview',
     poweredBy: 'Powered by Reveal',
     portalKpis: [
       ['Tenants', '12', 'text-gray-900'],

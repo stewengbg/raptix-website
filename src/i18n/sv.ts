@@ -31,9 +31,6 @@ export const sv = {
       healthy: 'Allt grönt',
     },
   },
-  trust: {
-    heading: 'Används av återförsäljare som kör Avigilon Alta',
-  },
   how: {
     eyebrow: 'Så fungerar det',
     title: 'Från kamera till insikt på tre steg.',
@@ -113,7 +110,7 @@ export const sv = {
       'Förstalinjesupport-verktyg för ditt team',
     ],
     cta: 'Bli partner',
-    portalDomain: 'partner.cloudsec.example/overview',
+    portalDomain: 'partner.reseller.example/overview',
     poweredBy: 'Drivs av Reveal',
     portalKpis: [
       ['Kunder', '12', 'text-gray-900'],
