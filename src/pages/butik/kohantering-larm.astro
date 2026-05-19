@@ -1,0 +1,15 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SpokeTemplate from '../../components/SpokeTemplate.astro';
+import * as page from '../../i18n/spokes/queue-alerts';
+---
+
+<Layout
+  locale="sv"
+  pathSv={page.paths.sv}
+  pathEn={page.paths.en}
+  title={page.meta.sv.title}
+  description={page.meta.sv.description}
+>
+  <SpokeTemplate locale="sv" content={page.sv} />
+</Layout>

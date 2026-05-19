@@ -1,0 +1,180 @@
+---
+import type { Locale } from '../i18n';
+import { SIGNUP_URL, t } from '../i18n';
+
+export type Faq = { q: string; a: string };
+export type SpokeStep = { title: string; body: string };
+export type SpokeFeature = { title: string; body: string; bullets?: string[] };
+
+export type SpokeContent = {
+  eyebrow: string;
+  hero: {
+    badge?: string;
+    title: string;
+    titleHighlight?: string;
+    subtitle: string;
+    ctaPrimary: string;
+    ctaSecondary: string;
+    trialNote: string;
+  };
+  problem: { title: string; body: string[] };
+  howItWorks: { eyebrow: string; title: string; steps: SpokeStep[] };
+  features: { eyebrow: string; title: string; items: SpokeFeature[] };
+  faq: { eyebrow: string; title: string; items: Faq[] };
+  finalCta: { title: string; body: string; cta: string };
+  related?: { eyebrow: string; items: { title: string; href: string; body: string }[] };
+};
+
+interface Props {
+  locale: Locale;
+  content: SpokeContent;
+}
+
+const { locale, content } = Astro.props;
+const tr = t(locale);
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: content.faq.items.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<!-- HERO -->
+<section class="relative overflow-hidden">
+  <div class="absolute inset-0 glow pointer-events-none"></div>
+  <div class="relative max-w-5xl mx-auto px-6 pt-16 pb-16 text-center">
+    <p class="text-xs font-bold uppercase tracking-widest text-blue-700">{content.eyebrow}</p>
+    {content.hero.badge && (
+      <span class="mt-4 inline-flex items-center gap-2 pill-soft text-xs font-semibold px-3 py-1 rounded-full">
+        <span class="w-1.5 h-1.5 rounded-full bg-indigo-600"></span>
+        {content.hero.badge}
+      </span>
+    )}
+    <h1 class="mt-5 text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.1]">
+      {content.hero.title}
+      {content.hero.titleHighlight && <> <span class="brand-text">{content.hero.titleHighlight}</span></>}
+    </h1>
+    <p class="mt-5 text-lg text-gray-600 max-w-2xl mx-auto">{content.hero.subtitle}</p>
+    <div class="mt-7 flex items-center justify-center gap-3">
+      <a href={SIGNUP_URL} class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2.5 rounded-lg transition">
+        {content.hero.ctaPrimary}
+      </a>
+      <a href="#funktioner" class="text-sm font-semibold text-gray-700 hover:text-gray-900 px-3 py-2.5">
+        {content.hero.ctaSecondary} →
+      </a>
+    </div>
+    <p class="mt-4 text-xs text-gray-400">{content.hero.trialNote}</p>
+  </div>
+</section>
+
+<!-- PROBLEM CALLOUT -->
+<section class="bg-gray-50 border-y border-gray-100">
+  <div class="max-w-4xl mx-auto px-6 py-16">
+    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-center">{content.problem.title}</h2>
+    <div class="mt-6 space-y-4 text-gray-600 text-center max-w-2xl mx-auto">
+      {content.problem.body.map((p) => <p>{p}</p>)}
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="max-w-6xl mx-auto px-6 py-20">
+  <div class="text-center mb-12">
+    <p class="text-xs font-bold uppercase tracking-widest text-blue-700">{content.howItWorks.eyebrow}</p>
+    <h2 class="mt-2 text-3xl md:text-4xl font-extrabold tracking-tight">{content.howItWorks.title}</h2>
+  </div>
+  <div class="grid md:grid-cols-3 gap-6">
+    {content.howItWorks.steps.map((step, i) => (
+      <div class="rounded-xl border border-gray-100 bg-white p-6">
+        <span class="step-num">{i + 1}</span>
+        <h3 class="mt-4 text-lg font-bold">{step.title}</h3>
+        <p class="mt-2 text-sm text-gray-600">{step.body}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="funktioner" class="bg-gray-50 border-y border-gray-100">
+  <div class="max-w-6xl mx-auto px-6 py-20">
+    <div class="text-center mb-12">
+      <p class="text-xs font-bold uppercase tracking-widest text-blue-700">{content.features.eyebrow}</p>
+      <h2 class="mt-2 text-3xl md:text-4xl font-extrabold tracking-tight">{content.features.title}</h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6">
+      {content.features.items.map((feat) => (
+        <div class="rounded-xl bg-white border border-gray-100 p-6">
+          <h3 class="text-lg font-bold">{feat.title}</h3>
+          <p class="mt-2 text-sm text-gray-600">{feat.body}</p>
+          {feat.bullets && (
+            <ul class="mt-3 space-y-1.5 text-sm text-gray-600">
+              {feat.bullets.map((b) => <li>· {b}</li>)}
+            </ul>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="max-w-3xl mx-auto px-6 py-20">
+  <div class="text-center mb-10">
+    <p class="text-xs font-bold uppercase tracking-widest text-blue-700">{content.faq.eyebrow}</p>
+    <h2 class="mt-2 text-3xl md:text-4xl font-extrabold tracking-tight">{content.faq.title}</h2>
+  </div>
+  <div class="divide-y divide-gray-100 border-y border-gray-100">
+    {content.faq.items.map((f) => (
+      <details class="group py-5">
+        <summary class="flex items-start justify-between gap-4 cursor-pointer list-none font-semibold text-gray-900">
+          <span>{f.q}</span>
+          <span class="text-blue-600 text-xl leading-none transition-transform group-open:rotate-45">+</span>
+        </summary>
+        <p class="mt-3 text-gray-600 text-sm leading-relaxed">{f.a}</p>
+      </details>
+    ))}
+  </div>
+</section>
+
+<!-- RELATED PAGES (internal linking — SEO + UX) -->
+{content.related && content.related.items.length > 0 && (
+  <section class="bg-gray-50 border-y border-gray-100">
+    <div class="max-w-6xl mx-auto px-6 py-14">
+      <p class="text-xs font-bold uppercase tracking-widest text-blue-700 text-center mb-6">
+        {content.related.eyebrow}
+      </p>
+      <div class="grid md:grid-cols-3 gap-4">
+        {content.related.items.map((r) => (
+          <a
+            href={r.href}
+            class="rounded-xl bg-white border border-gray-100 hover:border-blue-300 hover:shadow-sm p-5 transition group"
+          >
+            <h3 class="font-bold text-gray-900 group-hover:text-blue-700">{r.title} →</h3>
+            <p class="mt-1.5 text-sm text-gray-600">{r.body}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+<!-- FINAL CTA -->
+<section class="border-t border-gray-100">
+  <div class="max-w-3xl mx-auto px-6 py-16 text-center">
+    <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">{content.finalCta.title}</h2>
+    <p class="mt-4 text-gray-600">{content.finalCta.body}</p>
+    <a
+      href={SIGNUP_URL}
+      class="inline-block mt-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition"
+    >
+      {content.finalCta.cta}
+    </a>
+  </div>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />

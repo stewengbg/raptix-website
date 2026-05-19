@@ -1,0 +1,89 @@
+---
+import type { Locale } from '../i18n';
+import { SIGNUP_URL } from '../i18n';
+import type { HubContent } from '../i18n/spokes/butik-hub';
+
+interface Props {
+  locale: Locale;
+  content: HubContent;
+}
+
+const { locale, content } = Astro.props;
+const soonLabel = locale === 'sv' ? 'Snart' : 'Soon';
+---
+
+<!-- HERO -->
+<section class="relative overflow-hidden">
+  <div class="absolute inset-0 glow pointer-events-none"></div>
+  <div class="relative max-w-5xl mx-auto px-6 pt-16 pb-12 text-center">
+    <p class="text-xs font-bold uppercase tracking-widest text-blue-700">{content.eyebrow}</p>
+    <h1 class="mt-4 text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.1]">
+      {content.hero.title} <span class="brand-text">{content.hero.titleHighlight}</span>.
+    </h1>
+    <p class="mt-5 text-lg text-gray-600 max-w-2xl mx-auto">{content.hero.subtitle}</p>
+    <div class="mt-7 flex items-center justify-center gap-3">
+      <a href={SIGNUP_URL} class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2.5 rounded-lg transition">
+        {content.hero.ctaPrimary}
+      </a>
+      <a href="#grid" class="text-sm font-semibold text-gray-700 hover:text-gray-900 px-3 py-2.5">
+        ↓
+      </a>
+    </div>
+    <p class="mt-4 text-xs text-gray-400">{content.hero.trialNote}</p>
+  </div>
+</section>
+
+<!-- CARD GRID -->
+<section id="grid" class="bg-gray-50 border-y border-gray-100">
+  <div class="max-w-6xl mx-auto px-6 py-20">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">{content.gridTitle}</h2>
+      <p class="mt-3 text-gray-600 max-w-2xl mx-auto">{content.gridSubtitle}</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {content.cards.map((card) => {
+        const baseClasses =
+          'block rounded-xl bg-white border p-6 transition relative';
+        const interactiveClasses = card.soon
+          ? 'border-gray-100 opacity-60 cursor-not-allowed'
+          : 'border-gray-100 hover:border-blue-300 hover:shadow-md hover:-translate-y-0.5';
+        return (
+          <a
+            href={card.soon ? undefined : card.href}
+            class:list={[baseClasses, interactiveClasses]}
+            aria-disabled={card.soon ? 'true' : undefined}
+          >
+            {card.soon && (
+              <span class="absolute top-3 right-3 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-gray-100 text-gray-500">
+                {soonLabel}
+              </span>
+            )}
+            <div class="feature-icon">{card.icon}</div>
+            <h3 class="mt-4 text-lg font-bold text-gray-900">{card.title}</h3>
+            <p class="mt-2 text-sm text-gray-600">{card.body}</p>
+            {!card.soon && (
+              <p class="mt-4 text-sm font-semibold text-blue-600">
+                {locale === 'sv' ? 'Läs mer' : 'Read more'} →
+              </p>
+            )}
+          </a>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="border-t border-gray-100">
+  <div class="max-w-3xl mx-auto px-6 py-16 text-center">
+    <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">{content.finalCta.title}</h2>
+    <p class="mt-4 text-gray-600">{content.finalCta.body}</p>
+    <a
+      href={SIGNUP_URL}
+      class="inline-block mt-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition"
+    >
+      {content.finalCta.cta}
+    </a>
+  </div>
+</section>

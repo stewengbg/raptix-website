@@ -1,0 +1,15 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HubTemplate from '../../components/HubTemplate.astro';
+import * as hub from '../../i18n/spokes/butik-hub';
+---
+
+<Layout
+  locale="sv"
+  pathSv={hub.paths.sv}
+  pathEn={hub.paths.en}
+  title={hub.meta.sv.title}
+  description={hub.meta.sv.description}
+>
+  <HubTemplate locale="sv" content={hub.sv} />
+</Layout>

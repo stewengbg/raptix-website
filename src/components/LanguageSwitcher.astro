@@ -3,11 +3,12 @@ import type { Locale } from '../i18n';
 
 interface Props {
   locale: Locale;
+  /** Path to the equivalent page in the other locale (e.g. '/en/retail/reports') */
+  altPath: string;
 }
 
-const { locale } = Astro.props;
+const { locale, altPath } = Astro.props;
 const otherLocale: Locale = locale === 'sv' ? 'en' : 'sv';
-const otherHref = otherLocale === 'sv' ? '/' : '/en/';
 const otherLabel = otherLocale === 'sv' ? 'SV' : 'EN';
 const currentLabel = locale === 'sv' ? 'SV' : 'EN';
 ---
@@ -15,7 +16,7 @@ const currentLabel = locale === 'sv' ? 'SV' : 'EN';
 <div class="inline-flex items-center text-xs font-semibold rounded-full border border-gray-200 overflow-hidden">
   <span class="px-2.5 py-1 bg-gray-900 text-white">{currentLabel}</span>
   <a
-    href={otherHref}
+    href={altPath}
     data-lang-switch
     class="px-2.5 py-1 text-gray-500 hover:text-gray-900 hover:bg-gray-50 transition"
     aria-label={`Switch to ${otherLabel}`}
