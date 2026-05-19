@@ -1,0 +1,42 @@
+---
+import type { Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+const t = {
+  sv: {
+    url: 'reveal.raptix.se/skarmar/personalrum',
+    alt: 'Reveal in-store dashboard på TV — live besökare, kassakö, kyl-temperaturer och larm',
+    caption: 'Verklig dashboard från Reveal — TV-redo, mörkt tema, auto-refresh var 30:e sekund.',
+  },
+  en: {
+    url: 'reveal.raptix.se/screens/break-room',
+    alt: 'Reveal in-store dashboard on a TV — live visitors, checkout queue, fridge temperatures and alerts',
+    caption: 'Real Reveal dashboard — TV-ready, dark theme, auto-refresh every 30 seconds.',
+  },
+}[locale];
+---
+
+<div class="browser-frame">
+  <div class="browser-bar">
+    <span class="dot dot-r"></span>
+    <span class="dot dot-y"></span>
+    <span class="dot dot-g"></span>
+    <span class="ml-3 text-xs text-gray-400">{t.url}</span>
+  </div>
+  <img
+    src="/screenshots/screen-dashboard.png"
+    alt={t.alt}
+    width="1920"
+    height="1080"
+    loading="lazy"
+    decoding="async"
+    class="w-full h-auto block"
+  />
+</div>
+
+<p class="text-xs text-gray-400 text-center mt-3">{t.caption}</p>

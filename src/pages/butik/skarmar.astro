@@ -1,0 +1,20 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SpokeTemplate from '../../components/SpokeTemplate.astro';
+import ScreenDashboardHero from '../../components/mocks/ScreenDashboardHero.astro';
+import ScreenEditorMid from '../../components/mocks/ScreenEditorMid.astro';
+import * as page from '../../i18n/spokes/in-store-screens';
+---
+
+<Layout
+  locale="sv"
+  pathSv={page.paths.sv}
+  pathEn={page.paths.en}
+  title={page.meta.sv.title}
+  description={page.meta.sv.description}
+>
+  <SpokeTemplate locale="sv" content={page.sv}>
+    <ScreenDashboardHero slot="hero-visual" locale="sv" />
+    <ScreenEditorMid slot="mid-visual" locale="sv" />
+  </SpokeTemplate>
+</Layout>

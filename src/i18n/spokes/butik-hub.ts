@@ -69,7 +69,6 @@ export const sv: HubContent = {
       body: 'Timvis besöksflöde jämfört med en typisk vecka. Multi-butiksvy från en skärm.',
       href: '/butik/besoksstatistik/',
       icon: '📊',
-      soon: true,
     },
     {
       title: 'Beläggning & kapacitet',
@@ -90,7 +89,6 @@ export const sv: HubContent = {
       body: 'TV-redo dashboards för personalrum och kassan. Dela via länk — ingen inloggning krävs.',
       href: '/butik/skarmar/',
       icon: '📺',
-      soon: true,
     },
   ],
   finalCta: {
@@ -130,7 +128,6 @@ export const en: HubContent = {
       body: 'Hourly footfall compared to a typical week. Multi-site fleet view from a single screen.',
       href: '/en/retail/visitor-counting/',
       icon: '📊',
-      soon: true,
     },
     {
       title: 'Occupancy & capacity',
@@ -151,7 +148,6 @@ export const en: HubContent = {
       body: "TV-ready dashboards for break rooms and the front of house. Share by link — no login required.",
       href: '/en/retail/in-store-screens/',
       icon: '📺',
-      soon: true,
     },
   ],
   finalCta: {

@@ -1,0 +1,47 @@
+---
+import type { Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+const t = {
+  sv: {
+    eyebrow: 'Insights-vyn',
+    title: 'Mönstren bakom siffrorna',
+    body: 'Hour-of-week heatmap, kö-analys, beläggningsfördelning och miljöövervakning — allt i en flik.',
+    alt: 'Reveal Insights-vyn — hour-of-week heatmap, kö-analys, beläggningsfördelning, miljöövervakning',
+  },
+  en: {
+    eyebrow: 'The Insights tab',
+    title: 'The patterns behind the numbers',
+    body: 'Hour-of-week heatmap, queue analysis, occupancy distribution and environmental monitoring — all in one tab.',
+    alt: "Reveal's Insights view — hour-of-week heatmap, queue analysis, occupancy distribution, environmental monitoring",
+  },
+}[locale];
+---
+
+<div class="text-center mb-6">
+  <p class="text-xs font-bold uppercase tracking-widest text-blue-700">{t.eyebrow}</p>
+  <h3 class="mt-1.5 text-2xl font-extrabold tracking-tight">{t.title}</h3>
+  <p class="mt-2 text-sm text-gray-600">{t.body}</p>
+</div>
+
+<div class="browser-frame">
+  <div class="browser-bar">
+    <span class="dot dot-r"></span>
+    <span class="dot dot-y"></span>
+    <span class="dot dot-g"></span>
+  </div>
+  <img
+    src="/screenshots/insights-heatmap.png"
+    alt={t.alt}
+    width="1440"
+    height="1400"
+    loading="lazy"
+    decoding="async"
+    class="w-full h-auto block"
+  />
+</div>

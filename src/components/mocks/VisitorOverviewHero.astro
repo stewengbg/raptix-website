@@ -1,0 +1,42 @@
+---
+import type { Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+const t = {
+  sv: {
+    url: 'reveal.raptix.se/butiker/ica-hovas',
+    alt: 'Reveal single-site overview — live besökare, jämförelse mot typisk fredag, kö-larm och timchart',
+    caption: 'Reveals översikt — live besökare, jämförelse mot typisk fredag, kö-larm och peak-prognos.',
+  },
+  en: {
+    url: 'reveal.raptix.se/sites/ica-hovas',
+    alt: "Reveal single-site overview — live visitors, typical-Friday comparison, queue alert and hourly chart",
+    caption: "Reveal's overview — live visitors, typical-Friday comparison, queue alert and peak forecast.",
+  },
+}[locale];
+---
+
+<div class="browser-frame">
+  <div class="browser-bar">
+    <span class="dot dot-r"></span>
+    <span class="dot dot-y"></span>
+    <span class="dot dot-g"></span>
+    <span class="ml-3 text-xs text-gray-400">{t.url}</span>
+  </div>
+  <img
+    src="/screenshots/overview-single.png"
+    alt={t.alt}
+    width="1440"
+    height="1500"
+    loading="lazy"
+    decoding="async"
+    class="w-full h-auto block"
+  />
+</div>
+
+<p class="text-xs text-gray-400 text-center mt-3">{t.caption}</p>
