@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import SpokeTemplate from '../../components/SpokeTemplate.astro';
+import ReportsHero from '../../components/mocks/ReportsHero.astro';
 import * as page from '../../i18n/spokes/reports';
 ---
 
@@ -11,5 +12,7 @@ import * as page from '../../i18n/spokes/reports';
   title={page.meta.sv.title}
   description={page.meta.sv.description}
 >
-  <SpokeTemplate locale="sv" content={page.sv} />
+  <SpokeTemplate locale="sv" content={page.sv}>
+    <ReportsHero slot="hero-visual" locale="sv" />
+  </SpokeTemplate>
 </Layout>

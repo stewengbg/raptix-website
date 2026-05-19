@@ -1,6 +1,7 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import HubTemplate from '../../../components/HubTemplate.astro';
+import HubHero from '../../../components/mocks/HubHero.astro';
 import * as hub from '../../../i18n/spokes/butik-hub';
 ---
 
@@ -11,5 +12,7 @@ import * as hub from '../../../i18n/spokes/butik-hub';
   title={hub.meta.en.title}
   description={hub.meta.en.description}
 >
-  <HubTemplate locale="en" content={hub.en} />
+  <HubTemplate locale="en" content={hub.en}>
+    <HubHero slot="hero-visual" locale="en" />
+  </HubTemplate>
 </Layout>

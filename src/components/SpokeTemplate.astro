@@ -70,6 +70,11 @@ const faqJsonLd = {
     </div>
     <p class="mt-4 text-xs text-gray-400">{content.hero.trialNote}</p>
   </div>
+
+  <!-- HERO VISUAL (optional, provided by parent page) -->
+  <div class="relative max-w-4xl mx-auto px-6 pb-20">
+    <slot name="hero-visual" />
+  </div>
 </section>
 
 <!-- PROBLEM CALLOUT -->
@@ -121,6 +126,11 @@ const faqJsonLd = {
     </div>
   </div>
 </section>
+
+<!-- MID VISUAL (optional) -->
+<div class="max-w-4xl mx-auto px-6 py-6">
+  <slot name="mid-visual" />
+</div>
 
 <!-- FAQ -->
 <section class="max-w-3xl mx-auto px-6 py-20">

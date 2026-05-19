@@ -1,0 +1,96 @@
+---
+import type { Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+const t = {
+  sv: {
+    url: 'reveal.raptix.se/butiker/ica-hovas',
+    alertTitle: 'Kassakö över tröskel',
+    alertBody: 'Kassa 2 · 7 personer (gräns: 5) · larm skickat 14:32',
+    sectionLabel: 'Kassor · live',
+    tills: [
+      ['Kassa 1', '2', 'normal'],
+      ['Kassa 2', '7', 'over'],
+      ['Kassa 3', '1', 'normal'],
+      ['Självscan', '0', 'normal'],
+    ] as const,
+    statusNormal: 'inom gräns',
+    statusOver: 'över gräns',
+    foot: 'Reveal hämtar sensorvärden var 60:e sekund — larmet gick ut samma minut',
+  },
+  en: {
+    url: 'reveal.raptix.se/sites/ica-hovas',
+    alertTitle: 'Checkout queue over threshold',
+    alertBody: 'Till 2 · 7 people (limit: 5) · alert sent 14:32',
+    sectionLabel: 'Tills · live',
+    tills: [
+      ['Till 1', '2', 'normal'],
+      ['Till 2', '7', 'over'],
+      ['Till 3', '1', 'normal'],
+      ['Self-checkout', '0', 'normal'],
+    ] as const,
+    statusNormal: 'in range',
+    statusOver: 'over limit',
+    foot: 'Reveal polls every 60 seconds — alert went out the same minute',
+  },
+}[locale];
+---
+
+<div class="browser-frame">
+  <div class="browser-bar">
+    <span class="dot dot-r"></span>
+    <span class="dot dot-y"></span>
+    <span class="dot dot-g"></span>
+    <span class="ml-3 text-xs text-gray-400">{t.url}</span>
+  </div>
+  <div class="p-5 md:p-6 bg-gradient-to-b from-white to-gray-50">
+    <!-- Alert banner -->
+    <div class="rounded-lg border border-red-200 bg-red-50 px-4 py-3 flex items-start gap-3">
+      <span class="mt-0.5 inline-flex items-center justify-center w-6 h-6 rounded-full bg-red-500 text-white text-xs font-bold">!</span>
+      <div class="flex-1">
+        <p class="font-bold text-red-900 text-sm">{t.alertTitle}</p>
+        <p class="text-red-700 text-xs mt-0.5">{t.alertBody}</p>
+      </div>
+    </div>
+
+    <!-- Tills grid -->
+    <div class="mt-4">
+      <p class="text-[10px] font-bold uppercase tracking-widest text-gray-500">{t.sectionLabel}</p>
+      <div class="mt-2 grid grid-cols-2 md:grid-cols-4 gap-2">
+        {t.tills.map(([name, count, status]) => (
+          <div
+            class:list={[
+              'rounded-lg border px-3 py-3',
+              status === 'over' ? 'border-red-300 bg-red-50' : 'border-gray-200 bg-white',
+            ]}
+          >
+            <p class="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">{name}</p>
+            <p
+              class:list={[
+                'text-3xl font-extrabold leading-none mt-1.5',
+                status === 'over' ? 'text-red-700' : 'text-gray-900',
+              ]}
+            >
+              {count}
+            </p>
+            <p
+              class:list={[
+                'text-[10px] font-semibold mt-1.5',
+                status === 'over' ? 'text-red-600' : 'text-emerald-600',
+              ]}
+            >
+              {status === 'over' ? t.statusOver : t.statusNormal}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
+
+<p class="text-xs text-gray-400 text-center mt-3">{t.foot}</p>

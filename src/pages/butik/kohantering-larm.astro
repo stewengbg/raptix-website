@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import SpokeTemplate from '../../components/SpokeTemplate.astro';
+import QueueAlertsHero from '../../components/mocks/QueueAlertsHero.astro';
 import * as page from '../../i18n/spokes/queue-alerts';
 ---
 
@@ -11,5 +12,7 @@ import * as page from '../../i18n/spokes/queue-alerts';
   title={page.meta.sv.title}
   description={page.meta.sv.description}
 >
-  <SpokeTemplate locale="sv" content={page.sv} />
+  <SpokeTemplate locale="sv" content={page.sv}>
+    <QueueAlertsHero slot="hero-visual" locale="sv" />
+  </SpokeTemplate>
 </Layout>
