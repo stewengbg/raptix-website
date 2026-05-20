@@ -12,7 +12,7 @@ export const meta = {
       'Automatisk HACCP-temperaturövervakning för dina kylar och frysar via Avigilon Alta-sensorer. Full revisionsspår, klara PDF-rapporter för Livsmedelsverkets inspektion.',
   },
   en: {
-    title: 'HACCP temperature monitoring & food safety compliance — Reveal',
+    title: 'HACCP temperature monitoring — Reveal',
     description:
       'Automatic HACCP temperature monitoring for fridges and freezers via Avigilon Alta sensors. Full audit trail, ready-to-file PDF reports for food-safety inspections.',
   },

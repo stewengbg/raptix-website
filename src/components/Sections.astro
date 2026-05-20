@@ -1,6 +1,7 @@
 ---
 import type { Locale } from '../i18n';
 import { t, SIGNUP_URL, PARTNERS_MAILTO } from '../i18n';
+import SolutionsHomeSection from './SolutionsHomeSection.astro';
 
 interface Props {
   locale: Locale;
@@ -128,6 +129,9 @@ const tr = t(locale);
     ))}
   </div>
 </section>
+
+<!-- SOLUTIONS (links to /butik, /haccp, /kedjor hubs) -->
+<SolutionsHomeSection locale={locale} />
 
 <!-- FEATURES -->
 <section id="features" class="bg-gray-50 border-y border-gray-100">

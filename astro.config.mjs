@@ -28,9 +28,33 @@ export default defineConfig({
           en: 'en-GB',
         },
       },
-      changefreq: 'monthly',
-      priority: 0.9,
       lastmod: new Date(),
+      serialize(item) {
+        // Strip trailing slash for cleaner matching
+        const path = item.url
+          .replace('https://www.raptix.se', '')
+          .replace(/\/$/, '');
+
+        // Homepage — highest authority
+        if (path === '' || path === '/en') {
+          item.priority = 1.0;
+          item.changefreq = 'weekly';
+          return item;
+        }
+
+        // Top-level Solutions hubs and the For-Your-Store hub
+        const hubs = ['/butik', '/haccp', '/kedjor', '/en/retail', '/en/haccp', '/en/multi-site'];
+        if (hubs.includes(path)) {
+          item.priority = 0.9;
+          item.changefreq = 'monthly';
+          return item;
+        }
+
+        // Spoke pages under hubs
+        item.priority = 0.8;
+        item.changefreq = 'monthly';
+        return item;
+      },
     }),
   ],
 });

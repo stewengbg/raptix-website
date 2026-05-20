@@ -10,7 +10,7 @@ export const meta = {
       'Sex sätt att förvandla dina Avigilon Alta-kameror till data du faktiskt använder — besöksstatistik, köhantering, in-store skärmar, rapporter och mer.',
   },
   en: {
-    title: 'Reveal for your store — visitor analytics, queue, reports & screens',
+    title: 'Reveal for your store — visitor analytics, queue & reports',
     description:
       'Six ways to turn your Avigilon Alta cameras into data you actually use — visitor counts, queue management, in-store screens, reports and more.',
   },
