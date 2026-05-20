@@ -50,6 +50,14 @@ export default defineConfig({
           return item;
         }
 
+        // Legal pages — important to exist but rarely updated and not a ranking target
+        const legal = ['/integritetspolicy', '/en/privacy'];
+        if (legal.includes(path)) {
+          item.priority = 0.3;
+          item.changefreq = 'yearly';
+          return item;
+        }
+
         // Spoke pages under hubs
         item.priority = 0.8;
         item.changefreq = 'monthly';

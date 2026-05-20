@@ -1,0 +1,192 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const pathSv = '/integritetspolicy/';
+const pathEn = '/en/privacy/';
+const title = 'Integritetspolicy — Raptix';
+const description =
+  'Hur Raptix samlar in, använder och skyddar personuppgifter på raptix.se och i Reveal-appen. GDPR-kompatibel.';
+---
+
+<Layout locale="sv" pathSv={pathSv} pathEn={pathEn} title={title} description={description}>
+  <article class="max-w-3xl mx-auto px-6 py-16 prose-page">
+    <p class="text-xs font-bold uppercase tracking-widest text-blue-700">Juridiskt</p>
+    <h1 class="mt-2 text-4xl md:text-5xl font-extrabold tracking-tight">Integritetspolicy</h1>
+    <p class="mt-3 text-sm text-gray-500">Senast uppdaterad: 20 maj 2026</p>
+
+    <h2>1. Översikt</h2>
+    <p>
+      Raptix AB ("vi", "oss", "Raptix") driver webbplatsen <strong>raptix.se</strong> och programvaran
+      <strong>Reveal</strong> (reveal.raptix.se). Denna integritetspolicy förklarar vilken information vi samlar in
+      när du använder våra tjänster, varför vi samlar in den, vem den delas med och vilka rättigheter du har.
+    </p>
+    <p>
+      Vi följer EU:s allmänna dataskyddsförordning (GDPR) och tillhörande svensk lagstiftning.
+    </p>
+
+    <h2>2. Personuppgiftsansvarig</h2>
+    <p>
+      <strong>Raptix AB</strong><br />
+      Organisationsnummer: [att fylla i]<br />
+      Postadress: [att fylla i]<br />
+      E-post för dataförfrågningar: <a href="mailto:hello@raptix.se">hello@raptix.se</a>
+    </p>
+
+    <h2>3. Vilken information vi samlar in</h2>
+
+    <h3>3.1 raptix.se (denna webbplats)</h3>
+    <p>
+      raptix.se är en statisk informationssida. Vi använder <strong>inga cookies, inga spårningstekniker och ingen
+      analyticsplattform</strong>. Den enda information som passerar oss är:
+    </p>
+    <ul>
+      <li>
+        <strong>Standardloggar från vår värd</strong> (Netlify): IP-adress, webbläsartyp, tidsstämpel, sida som
+        besökts. Lagras enligt Netlifys policy (typiskt 30 dagar) och används för säkerhet och felsökning.
+      </li>
+      <li>
+        <strong>E-post du frivilligt skickar oss</strong> via mailto-länkar. Vi sparar dessa i vår inkorg enligt
+        vår normala e-postretention.
+      </li>
+    </ul>
+
+    <h3>3.2 reveal.raptix.se (Reveal-appen)</h3>
+    <p>När du skapar ett konto och använder Reveal samlar vi in:</p>
+    <ul>
+      <li><strong>Kontoinformation</strong>: e-postadress, namn, organisationsnamn och din roll i organisationen.</li>
+      <li><strong>Tenant-information</strong>: butiksnamn, plats, vilka Alta-kameror och sensorer som är kopplade.</li>
+      <li><strong>Avigilon Alta-anslutningsuppgifter</strong>: API-URL, användarnamn och lösenord — krypterat i vila.</li>
+      <li><strong>Sensor- och räknardata</strong>: besöksantal, kötider, temperaturer och beläggning. Datan är anonym
+        och innehåller inga personuppgifter om dina butiksbesökare.</li>
+      <li><strong>Betalningsinformation</strong>: hanteras direkt av Stripe. Vi lagrar endast kund-ID, prenumerations-ID
+        och fakturahistorik — inga kortuppgifter.</li>
+      <li><strong>Användning av tjänsten</strong>: vilka sidor du besöker och vilka funktioner du använder, för
+        support och produktförbättring.</li>
+    </ul>
+
+    <h2>4. Varför vi samlar in den (rättslig grund)</h2>
+    <ul>
+      <li>
+        <strong>Avtalsfullgörande</strong> (GDPR art. 6.1.b): kontoinformation och tjänstedata som krävs för att
+        leverera Reveal till dig.
+      </li>
+      <li>
+        <strong>Berättigat intresse</strong> (GDPR art. 6.1.f): säkerhetsloggar, felsökning, kund-support och
+        produktförbättring.
+      </li>
+      <li>
+        <strong>Rättslig förpliktelse</strong> (GDPR art. 6.1.c): fakturadata sparas enligt bokföringslagens 7-årskrav.
+      </li>
+      <li>
+        <strong>Samtycke</strong> (GDPR art. 6.1.a): när vi specifikt ber om det, t.ex. marknadsföringsutskick.
+      </li>
+    </ul>
+
+    <h2>5. Vem vi delar data med (underbiträden)</h2>
+    <p>Vi använder följande underbiträden för att driva tjänsten:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Tjänst</th>
+          <th>Vad de gör</th>
+          <th>Region</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Supabase</td><td>Databas, autentisering, edge functions</td><td>EU (Frankfurt)</td></tr>
+        <tr><td>Stripe</td><td>Betalningar och fakturering</td><td>USA + globalt</td></tr>
+        <tr><td>Netlify</td><td>Webbhotell för webbplatsen och appen</td><td>USA + globalt CDN</td></tr>
+        <tr><td>[E-postleverantör]</td><td>Transaktionsmejl (login-länkar, rapporter)</td><td>[att fylla i]</td></tr>
+        <tr><td>SMHI</td><td>Väderdata (inga personuppgifter delas)</td><td>Sverige</td></tr>
+      </tbody>
+    </table>
+    <p>
+      Vi delar <strong>aldrig</strong> dina data med tredjepartsannonsörer eller med Avigilon Alta utanför den
+      anslutning du själv konfigurerat.
+    </p>
+
+    <h2>6. Internationella överföringar</h2>
+    <p>
+      Stripe och Netlify har infrastruktur utanför EU. Båda är certifierade under EU-US Data Privacy Framework och
+      tillämpar standardavtalsklausuler (SCCs) enligt GDPR Kapitel V.
+    </p>
+
+    <h2>7. Hur länge vi sparar data</h2>
+    <ul>
+      <li><strong>Aktivt konto</strong>: så länge prenumerationen är aktiv.</li>
+      <li><strong>Efter avslutad prenumeration</strong>: 90 dagar, sedan raderas allt utom det som krävs enligt lag.</li>
+      <li><strong>Fakturadata</strong>: 7 år (bokföringslagens krav).</li>
+      <li><strong>HACCP-temperaturlogg</strong>: minst 3 år (branschstandard för spårbarhet).</li>
+      <li><strong>Webbserverloggar</strong>: 30 dagar.</li>
+      <li><strong>Support-e-post</strong>: 2 år.</li>
+    </ul>
+
+    <h2>8. Cookies och liknande tekniker</h2>
+    <p><strong>raptix.se</strong> — denna webbplats — använder inga cookies eller spårningstekniker.</p>
+    <p><strong>reveal.raptix.se</strong> (appen) använder följande strikt nödvändiga cookies:</p>
+    <ul>
+      <li>Supabase-autentisering — krävs för att hålla dig inloggad.</li>
+      <li>Stripe checkout-cookies — krävs under betalningsprocessen.</li>
+    </ul>
+    <p>Inga marknadsförings- eller analytics-cookies används.</p>
+
+    <h2>9. Dina rättigheter</h2>
+    <p>Enligt GDPR har du rätt att:</p>
+    <ul>
+      <li>Få veta vilken information vi har om dig (<strong>tillgång</strong>)</li>
+      <li>Få felaktig information rättad (<strong>rättelse</strong>)</li>
+      <li>Få dina uppgifter raderade (<strong>radering</strong>, "rätten att bli glömd")</li>
+      <li>Få en kopia av dina data i ett portabelt format (<strong>dataportabilitet</strong>)</li>
+      <li>Invända mot vår behandling (<strong>invändning</strong>)</li>
+      <li>Återkalla samtycke (när behandling baseras på samtycke)</li>
+    </ul>
+    <p>Skicka begäran till <a href="mailto:hello@raptix.se">hello@raptix.se</a> så svarar vi inom 30 dagar.</p>
+
+    <h2>10. Klagomål till tillsynsmyndigheten</h2>
+    <p>
+      Om du anser att vi hanterar dina personuppgifter felaktigt har du rätt att lämna in klagomål till
+      <strong>Integritetsskyddsmyndigheten (IMY)</strong>:
+    </p>
+    <ul>
+      <li>Webbplats: <a href="https://www.imy.se" rel="noopener">imy.se</a></li>
+      <li>E-post: imy@imy.se</li>
+      <li>Telefon: 08-657 61 00</li>
+    </ul>
+
+    <h2>11. Säkerhet</h2>
+    <ul>
+      <li>All data krypterad vid överföring (TLS 1.3)</li>
+      <li>All data krypterad i vila (Supabase standard)</li>
+      <li>Avigilon Alta-uppgifter krypterade med separat nyckel</li>
+      <li>Roll-baserad åtkomst — endast personer som behöver datan har tillgång</li>
+      <li>Säkerhetsincidenter rapporteras enligt GDPR art. 33 inom 72 timmar</li>
+    </ul>
+
+    <h2>12. Ändringar i policyn</h2>
+    <p>
+      Vi uppdaterar denna policy när tjänsten utvecklas. Större ändringar meddelas via e-post eller i appen. Datum för
+      senaste uppdatering står överst.
+    </p>
+
+    <h2>13. Kontakta oss</h2>
+    <p>
+      För frågor om denna policy eller dina personuppgifter:<br />
+      <a href="mailto:hello@raptix.se">hello@raptix.se</a><br />
+      Raptix AB
+    </p>
+  </article>
+
+  <style>
+    .prose-page h2 { margin-top: 3rem; font-size: 1.5rem; line-height: 2rem; font-weight: 700; letter-spacing: -0.025em; color: #111827; }
+    .prose-page h3 { margin-top: 2rem; font-size: 1.125rem; line-height: 1.75rem; font-weight: 700; color: #111827; }
+    .prose-page p { margin-top: 1rem; color: #374151; line-height: 1.625; }
+    .prose-page ul { margin-top: 1rem; padding-left: 1.5rem; list-style: disc outside; color: #374151; }
+    .prose-page ul > li { margin-top: 0.5rem; line-height: 1.625; }
+    .prose-page a { color: #1d4ed8; text-underline-offset: 2px; text-decoration: underline; }
+    .prose-page a:hover { color: #1e3a8a; }
+    .prose-page strong { font-weight: 600; color: #111827; }
+    .prose-page table { margin-top: 1rem; width: 100%; font-size: 0.875rem; border-collapse: collapse; }
+    .prose-page th { text-align: left; font-weight: 600; color: #111827; border-bottom: 1px solid #e5e7eb; padding: 0.5rem 1rem 0.5rem 0; }
+    .prose-page td { border-bottom: 1px solid #f3f4f6; padding: 0.5rem 1rem 0.5rem 0; color: #374151; vertical-align: top; }
+  </style>
+</Layout>

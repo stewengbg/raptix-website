@@ -8,6 +8,9 @@ interface Props {
 
 const { locale } = Astro.props;
 const tr = t(locale);
+
+const privacyHref = locale === 'sv' ? '/integritetspolicy/' : '/en/privacy/';
+const privacyLabel = locale === 'sv' ? 'Integritetspolicy' : 'Privacy';
 ---
 
 <footer class="border-t border-gray-100 bg-gray-50/60">
@@ -18,6 +21,7 @@ const tr = t(locale);
       <span>{tr.footer.tagline}</span>
     </div>
     <div class="flex items-center gap-5">
+      <a href={privacyHref} class="hover:text-gray-900">{privacyLabel}</a>
       <a href={`mailto:${tr.footer.contact}`} class="hover:text-gray-900">{tr.footer.contact}</a>
     </div>
   </div>
