@@ -1,0 +1,94 @@
+---
+import type { Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+const t = {
+  sv: {
+    url: 'reveal.raptix.se/butiker/ica-hovas/sensorer',
+    alertTitle: '1 sensor över kritisk gräns',
+    alertBody: 'Kyl — ägg · 8,2°C > 7,0°C · loggat 14:32',
+    sensors: [
+      { label: 'Kyl — kött', value: '4,2°C', range: '2–6°C', status: 'ok' },
+      { label: 'Kyl — mejeri', value: '3,8°C', range: '2–6°C', status: 'ok' },
+      { label: 'Kyl — ägg', value: '8,2°C', range: '2–7°C', status: 'breach' },
+      { label: 'Frys', value: '-19,1°C', range: '< -18°C', status: 'ok' },
+      { label: 'Rumstemp', value: '21,4°C', range: '18–22°C', status: 'ok' },
+      { label: 'Luftfuktighet', value: '47%', range: '40–60%', status: 'ok' },
+    ] as const,
+    complianceLabel: 'Efterlevnad senaste 7 dagar',
+    complianceValue: '99,8%',
+    caption: 'Live sensorövervakning — 24/7 loggning, push-larm vid avvikelse, HACCP-rapport varje måndag.',
+  },
+  en: {
+    url: 'reveal.raptix.se/sites/ica-hovas/sensors',
+    alertTitle: '1 sensor above critical limit',
+    alertBody: 'Fridge — eggs · 8.2°C > 7.0°C · logged 14:32',
+    sensors: [
+      { label: 'Fridge — meat', value: '4.2°C', range: '2–6°C', status: 'ok' },
+      { label: 'Fridge — dairy', value: '3.8°C', range: '2–6°C', status: 'ok' },
+      { label: 'Fridge — eggs', value: '8.2°C', range: '2–7°C', status: 'breach' },
+      { label: 'Freezer', value: '-19.1°C', range: '< -18°C', status: 'ok' },
+      { label: 'Ambient', value: '21.4°C', range: '18–22°C', status: 'ok' },
+      { label: 'Humidity', value: '47%', range: '40–60%', status: 'ok' },
+    ] as const,
+    complianceLabel: 'Compliance last 7 days',
+    complianceValue: '99.8%',
+    caption: 'Live sensor monitoring — 24/7 logging, push alerts on breach, HACCP report every Monday.',
+  },
+}[locale];
+---
+
+<div class="browser-frame">
+  <div class="browser-bar">
+    <span class="dot dot-r"></span>
+    <span class="dot dot-y"></span>
+    <span class="dot dot-g"></span>
+    <span class="ml-3 text-xs text-gray-400">{t.url}</span>
+  </div>
+  <div class="p-5 md:p-6 bg-gradient-to-b from-white to-gray-50">
+    <!-- Header row: alert + compliance badge -->
+    <div class="flex gap-3 items-start">
+      <div class="flex-1 rounded-lg border border-red-200 bg-red-50 px-4 py-3 flex items-start gap-3">
+        <span class="mt-0.5 inline-flex items-center justify-center w-6 h-6 rounded-full bg-red-500 text-white text-xs font-bold">!</span>
+        <div class="flex-1">
+          <p class="font-bold text-red-900 text-sm">{t.alertTitle}</p>
+          <p class="text-red-700 text-xs mt-0.5">{t.alertBody}</p>
+        </div>
+      </div>
+      <div class="rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-right">
+        <p class="text-[9px] tracking-widest uppercase text-emerald-700 font-bold">{t.complianceLabel}</p>
+        <p class="text-2xl font-extrabold text-emerald-700 mt-0.5">{t.complianceValue}</p>
+      </div>
+    </div>
+
+    <!-- Sensor grid -->
+    <div class="mt-4 grid grid-cols-2 md:grid-cols-3 gap-2 text-xs">
+      {t.sensors.map((s) => (
+        <div
+          class:list={[
+            'rounded-lg border px-3 py-2.5',
+            s.status === 'breach' ? 'border-red-300 bg-red-50' : 'border-gray-200 bg-white',
+          ]}
+        >
+          <p class="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">{s.label}</p>
+          <p
+            class:list={[
+              'text-xl font-extrabold leading-none mt-1.5',
+              s.status === 'breach' ? 'text-red-700' : 'text-gray-900',
+            ]}
+          >
+            {s.value}
+          </p>
+          <p class="text-[10px] text-gray-500 mt-1">{s.range}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<p class="text-xs text-gray-400 text-center mt-3">{t.caption}</p>

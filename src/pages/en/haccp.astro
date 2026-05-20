@@ -1,0 +1,20 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SpokeTemplate from '../../components/SpokeTemplate.astro';
+import HaccpHero from '../../components/mocks/HaccpHero.astro';
+import ReportsHero from '../../components/mocks/ReportsHero.astro';
+import * as page from '../../i18n/spokes/haccp';
+---
+
+<Layout
+  locale="en"
+  pathSv={page.paths.sv}
+  pathEn={page.paths.en}
+  title={page.meta.en.title}
+  description={page.meta.en.description}
+>
+  <SpokeTemplate locale="en" content={page.en}>
+    <HaccpHero slot="hero-visual" locale="en" />
+    <ReportsHero slot="mid-visual" locale="en" />
+  </SpokeTemplate>
+</Layout>

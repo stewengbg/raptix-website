@@ -1,0 +1,93 @@
+---
+import type { Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+const t = {
+  sv: {
+    url: 'reveal.raptix.se/butiker/ica-hovas',
+    alertTitle: 'Närmar dig kapacitet',
+    alertBody: '94 av 100 personer (94%) · 16:42',
+    inStoreLabel: 'I butik just nu',
+    capacityLabel: 'Av kapacitet',
+    peakLabel: 'Förväntad peak',
+    peakValue: '16:00–17:00',
+    peakNote: 'baserat på senaste 4 fredagarna',
+    caption: 'Live beläggning med kapacitetsring — push-larm vid 80% och 95%.',
+  },
+  en: {
+    url: 'reveal.raptix.se/sites/ica-hovas',
+    alertTitle: 'Approaching capacity',
+    alertBody: '94 of 100 people (94%) · 16:42',
+    inStoreLabel: 'In store right now',
+    capacityLabel: 'Of capacity',
+    peakLabel: 'Expected peak',
+    peakValue: '16:00–17:00',
+    peakNote: 'based on the last 4 Fridays',
+    caption: 'Live occupancy with capacity ring — push alerts at 80% and 95%.',
+  },
+}[locale];
+---
+
+<div class="browser-frame">
+  <div class="browser-bar">
+    <span class="dot dot-r"></span>
+    <span class="dot dot-y"></span>
+    <span class="dot dot-g"></span>
+    <span class="ml-3 text-xs text-gray-400">{t.url}</span>
+  </div>
+  <div class="p-5 md:p-6 bg-gradient-to-b from-white to-gray-50">
+    <!-- Alert banner -->
+    <div class="rounded-lg border border-amber-300 bg-amber-50 px-4 py-3 flex items-start gap-3">
+      <span class="mt-0.5 inline-flex items-center justify-center w-6 h-6 rounded-full bg-amber-500 text-white text-xs font-bold">!</span>
+      <div class="flex-1">
+        <p class="font-bold text-amber-900 text-sm">{t.alertTitle}</p>
+        <p class="text-amber-700 text-xs mt-0.5">{t.alertBody}</p>
+      </div>
+    </div>
+
+    <!-- Three-card layout: capacity ring + KPIs -->
+    <div class="mt-4 grid grid-cols-3 gap-3">
+      <!-- Capacity ring -->
+      <div class="bg-white border border-gray-200 rounded-lg p-3 flex flex-col items-center justify-center">
+        <div class="relative w-20 h-20">
+          <svg class="w-full h-full -rotate-90" viewBox="0 0 36 36">
+            <circle cx="18" cy="18" r="15.9" fill="none" stroke="#e5e7eb" stroke-width="3" />
+            <circle
+              cx="18"
+              cy="18"
+              r="15.9"
+              fill="none"
+              stroke="#f59e0b"
+              stroke-width="3"
+              stroke-dasharray="94 100"
+              stroke-linecap="round"
+            />
+          </svg>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <span class="text-lg font-extrabold text-gray-900">94%</span>
+          </div>
+        </div>
+        <p class="mt-1.5 text-[9px] tracking-widest uppercase text-gray-500 font-bold">{t.capacityLabel}</p>
+      </div>
+      <!-- In store -->
+      <div class="bg-white border border-gray-200 rounded-lg px-3 py-3 flex flex-col justify-center">
+        <p class="text-[9px] tracking-widest uppercase text-gray-500 font-bold">{t.inStoreLabel}</p>
+        <p class="text-3xl font-extrabold leading-none mt-1.5">94</p>
+        <p class="text-[10px] text-gray-500 mt-1">av 100</p>
+      </div>
+      <!-- Peak forecast -->
+      <div class="bg-white border border-gray-200 rounded-lg px-3 py-3 flex flex-col justify-center">
+        <p class="text-[9px] tracking-widest uppercase text-gray-500 font-bold">{t.peakLabel}</p>
+        <p class="text-xl font-extrabold leading-none mt-1.5 text-gray-900">{t.peakValue}</p>
+        <p class="text-[10px] text-gray-500 mt-1">{t.peakNote}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p class="text-xs text-gray-400 text-center mt-3">{t.caption}</p>

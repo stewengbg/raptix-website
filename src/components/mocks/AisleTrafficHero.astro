@@ -1,0 +1,42 @@
+---
+import type { Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+const t = {
+  sv: {
+    url: 'reveal.raptix.se/butiker/ica-hovas',
+    alt: 'Reveal aktivitet per gång — staplade passager för Ägg, Chips, Bönor, Kaffe, Olivolja, Disk',
+    caption: 'Aktivitetspanel — passager per gång idag, sorterade högst till lägst.',
+  },
+  en: {
+    url: 'reveal.raptix.se/sites/ica-hovas',
+    alt: 'Reveal aisle activity — stacked passages for Eggs, Chips, Beans, Coffee, Olive Oil, Counter',
+    caption: 'Aisle activity panel — passages per aisle today, sorted high to low.',
+  },
+}[locale];
+---
+
+<div class="browser-frame">
+  <div class="browser-bar">
+    <span class="dot dot-r"></span>
+    <span class="dot dot-y"></span>
+    <span class="dot dot-g"></span>
+    <span class="ml-3 text-xs text-gray-400">{t.url}</span>
+  </div>
+  <img
+    src="/screenshots/overview-aisles.png"
+    alt={t.alt}
+    width="1440"
+    height="1600"
+    loading="lazy"
+    decoding="async"
+    class="w-full h-auto block"
+  />
+</div>
+
+<p class="text-xs text-gray-400 text-center mt-3">{t.caption}</p>

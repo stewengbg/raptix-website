@@ -1,0 +1,42 @@
+---
+import type { Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+const t = {
+  sv: {
+    url: 'reveal.raptix.se/oversikt',
+    alt: 'Reveal multi-butiksvy — alla butiker bredvid varandra med live KPI:er, kö-larm och 7-dagars trend',
+    caption: 'Multi-butiksvyn — distriktschefen ser direkt vilken butik som behöver attention.',
+  },
+  en: {
+    url: 'reveal.raptix.se/overview',
+    alt: 'Reveal multi-site fleet view — every store side by side with live KPIs, queue alerts and 7-day trend',
+    caption: "The multi-site fleet view — the district manager sees instantly which store needs attention.",
+  },
+}[locale];
+---
+
+<div class="browser-frame">
+  <div class="browser-bar">
+    <span class="dot dot-r"></span>
+    <span class="dot dot-y"></span>
+    <span class="dot dot-g"></span>
+    <span class="ml-3 text-xs text-gray-400">{t.url}</span>
+  </div>
+  <img
+    src="/screenshots/overview-multi.png"
+    alt={t.alt}
+    width="1440"
+    height="1500"
+    loading="lazy"
+    decoding="async"
+    class="w-full h-auto block"
+  />
+</div>
+
+<p class="text-xs text-gray-400 text-center mt-3">{t.caption}</p>

@@ -75,14 +75,12 @@ export const sv: HubContent = {
       body: 'Hur många är i butiken nu? Hur nära kapaciteten? Larm när det blir trångt.',
       href: '/butik/belaggning/',
       icon: '👥',
-      soon: true,
     },
     {
       title: 'Hyll- & gångtrafik',
       body: 'Vilka hyllor får mest besök? Använd datan för bättre layout och merchandising.',
       href: '/butik/hyllaktivitet/',
       icon: '🛒',
-      soon: true,
     },
     {
       title: 'In-store skärmar',
@@ -134,14 +132,12 @@ export const en: HubContent = {
       body: 'How many people are in store right now? How close to capacity? Alerts when it gets crowded.',
       href: '/en/retail/occupancy/',
       icon: '👥',
-      soon: true,
     },
     {
       title: 'Aisle traffic',
       body: 'Which aisles get the most visits? Use the data for better layout and merchandising.',
       href: '/en/retail/aisle-traffic/',
       icon: '🛒',
-      soon: true,
     },
     {
       title: 'In-store screens',

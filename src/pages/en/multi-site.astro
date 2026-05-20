@@ -1,0 +1,18 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SpokeTemplate from '../../components/SpokeTemplate.astro';
+import MultiSiteHero from '../../components/mocks/MultiSiteHero.astro';
+import * as page from '../../i18n/spokes/multi-site';
+---
+
+<Layout
+  locale="en"
+  pathSv={page.paths.sv}
+  pathEn={page.paths.en}
+  title={page.meta.en.title}
+  description={page.meta.en.description}
+>
+  <SpokeTemplate locale="en" content={page.en}>
+    <MultiSiteHero slot="hero-visual" locale="en" />
+  </SpokeTemplate>
+</Layout>
