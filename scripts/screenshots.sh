@@ -14,8 +14,18 @@ HIDE_CSS='<style>.note,.bg-yellow-50,.bg-yellow-100{display:none!important}body{
 shot() {
   local mockup="$1"; local outname="$2"; local size="$3"
   echo "  $mockup → $outname ($size)"
-  # Inject CSS by appending a <style> just after <head>
-  sed "s|</head>|$HIDE_CSS</head>|" "$MOCKUPS/$mockup" > "$TMP/$mockup"
+  # Inject CSS to hide disclaimer banners, and substitute identifiable demo
+  # data with neutral placeholders so screenshots are safe for marketing use:
+  #   - stefan@jarlegren.se          → manager@example.com  (Stefan's personal email)
+  #   - store-manager@ica.se         → store-manager@example.com
+  #   - >avano< / >Avano<            → >Nordic Retail<       (Stefan's other company)
+  sed \
+    -e "s|</head>|$HIDE_CSS</head>|" \
+    -e 's|stefan@jarlegren\.se|manager@example.com|g' \
+    -e 's|store-manager@ica\.se|store-manager@example.com|g' \
+    -e 's|>avano<|>Nordic Retail<|g' \
+    -e 's|>Avano<|>Nordic Retail<|g' \
+    "$MOCKUPS/$mockup" > "$TMP/$mockup"
   "$CHROME" --headless=new --disable-gpu --hide-scrollbars \
     --screenshot="$OUT/$outname" \
     --window-size="$size" \
