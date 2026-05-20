@@ -19,12 +19,21 @@ shot() {
   #   - stefan@jarlegren.se          → manager@example.com  (Stefan's personal email)
   #   - store-manager@ica.se         → store-manager@example.com
   #   - >avano< / >Avano<            → >Nordic Retail<       (Stefan's other company)
+  #   - Real-brand store names       → Demo Store 1 / 2 / 3  (no third-party brands)
+  #   - Real Swedish street names    → Demo Store 1 / 2      (used as site names in mockups)
+  # NOTE: order matters — replace longer strings before shorter prefixes.
   sed \
     -e "s|</head>|$HIDE_CSS</head>|" \
     -e 's|stefan@jarlegren\.se|manager@example.com|g' \
     -e 's|store-manager@ica\.se|store-manager@example.com|g' \
     -e 's|>avano<|>Nordic Retail<|g' \
     -e 's|>Avano<|>Nordic Retail<|g' \
+    -e 's|ICA Supermarket Vasastan|Demo Store 2|g' \
+    -e 's|ICA Kvantum Lidingö|Demo Store 3|g' \
+    -e 's|ICA Nära Roslagstull|Demo Store 1|g' \
+    -e 's|Soldatvägen|Demo Store 1|g' \
+    -e 's|Vasagatan|Demo Store 2|g' \
+    -e 's|ICA · |Demo · |g' \
     "$MOCKUPS/$mockup" > "$TMP/$mockup"
   "$CHROME" --headless=new --disable-gpu --hide-scrollbars \
     --screenshot="$OUT/$outname" \

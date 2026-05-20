@@ -34,8 +34,8 @@ export const en: typeof sv = {
     },
     siteBreakdown: 'Per site · today',
     sites: [
-      ['ICA Hovås', '1,023'],
-      ['ICA Sisjön', '715'],
+      ['Demo Store 1', '1,023'],
+      ['Demo Store 2', '715'],
     ],
     history: 'Last 30 days · imported on connect',
   },
@@ -138,7 +138,7 @@ export const en: typeof sv = {
       ],
       mock: {
         title: 'HACCP report · Week 18',
-        subtitle: 'ICA Hovås · Generated 2026-05-05',
+        subtitle: 'Demo Store 1 · Generated 2026-05-05',
         rows: [
           ['Fridge — meat', 'In range', '2-6°C'],
           ['Fridge — dairy', 'In range', '2-6°C'],

@@ -32,8 +32,8 @@ export const sv = {
     },
     siteBreakdown: 'Per butik · idag',
     sites: [
-      ['ICA Hovås', '1 023'],
-      ['ICA Sisjön', '715'],
+      ['Demo Store 1', '1 023'],
+      ['Demo Store 2', '715'],
     ],
     history: 'Senaste 30 dagarna · importerat vid anslutning',
   },
@@ -136,7 +136,7 @@ export const sv = {
       ],
       mock: {
         title: 'HACCP-rapport · Vecka 18',
-        subtitle: 'ICA Hovås · Genererad 2026-05-05',
+        subtitle: 'Demo Store 1 · Genererad 2026-05-05',
         rows: [
           ['Kyl — kött', 'Inom gräns', '2-6°C'],
           ['Kyl — mejeri', 'Inom gräns', '2-6°C'],
