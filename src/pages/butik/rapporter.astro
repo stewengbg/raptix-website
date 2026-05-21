@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import SpokeTemplate from '../../components/SpokeTemplate.astro';
 import ReportsHero from '../../components/mocks/ReportsHero.astro';
+import ReportsArchiveMid from '../../components/mocks/ReportsArchiveMid.astro';
 import * as page from '../../i18n/spokes/reports';
 ---
 
@@ -14,5 +15,6 @@ import * as page from '../../i18n/spokes/reports';
 >
   <SpokeTemplate locale="sv" content={page.sv}>
     <ReportsHero slot="hero-visual" locale="sv" />
+    <ReportsArchiveMid slot="mid-visual" locale="sv" />
   </SpokeTemplate>
 </Layout>

@@ -24,7 +24,7 @@ export const sv: SpokeContent = {
     title: 'Rapporten skrivs själv.',
     titleHighlight: 'Du vidarebefordrar bara.',
     subtitle:
-      'Reveal mejlar veckans handels- och HACCP-rapport till rätt person på rätt dag. Inga manuella sammanställningar, ingen pärm, ingen panik på fredag eftermiddag.',
+      'Reveal mejlar besökarstatistik, beläggning, HACCP-temperaturer och alla dina sensorer till rätt person på rätt dag. Inga manuella sammanställningar, ingen pärm, ingen panik på fredag eftermiddag.',
     ctaPrimary: 'Starta gratis provperiod',
     ctaSecondary: 'Se hur det funkar',
     trialNote: '30 dagars gratis provperiod · ingen ny hårdvara · avsluta när du vill',
@@ -32,9 +32,9 @@ export const sv: SpokeContent = {
   problem: {
     title: 'En timme. Varje vecka. Per butik.',
     body: [
-      'Manuella veckorapporter äter en timme av varje butikschefs vecka. Multiplicera med fjorton butiker — det är två arbetsdagar per månad som försvinner i Excel.',
-      'HACCP-pärmen är värre. När inspektören står i dörren ska du visa tre månaders temperaturlogg per kyl. Är pärmen uppdaterad? Ligger den ens på rätt plats?',
-      'Båda problemen löses av samma sak: rapporter som skriver sig själva och hamnar i inkorgen utan att någon behöver komma ihåg.',
+      'Manuella veckorapporter äter en timme av varje butikschefs vecka. Besökarsiffrorna ska sammanställas. Beläggningen ska jämföras med förra månaden. HACCP-pärmen ska uppdateras. Multiplicera med fjorton butiker — det är två arbetsdagar per månad som försvinner i Excel.',
+      'Och rapporten är fortfarande bara ett ögonblick. Nästa vecka börjar samma jobb om.',
+      'Allt löses av samma sak: rapporter som skriver sig själva — för varje räknare, varje sensor — och hamnar i rätt persons inkorg utan att någon behöver komma ihåg.',
     ],
   },
   howItWorks: {
@@ -43,7 +43,7 @@ export const sv: SpokeContent = {
     steps: [
       {
         title: 'Välj rapport-typ',
-        body: 'Handelsrapport, HACCP-temperaturrapport eller en anpassad sammanställning. Per butik eller över hela kedjan.',
+        body: 'Besöksrapport, beläggning, kö, HACCP-temperaturer, miljösensorer eller en anpassad sammanställning. Per butik eller över hela kedjan.',
       },
       {
         title: 'Sätt mottagare och frekvens',
@@ -56,22 +56,32 @@ export const sv: SpokeContent = {
     ],
   },
   features: {
-    eyebrow: 'Funktioner',
-    title: 'Allt din rapportering behöver',
+    eyebrow: 'Rapport-typer',
+    title: 'En rapport för varje sensor och räknare',
     items: [
       {
-        title: 'Handelsrapport — vecko eller månad',
-        body: 'Besökare, kö, peak-tider, jämförelse mot förra perioden. Sammanställd per butik eller över hela kedjan.',
+        title: 'Besöks- och kö-rapport',
+        body: 'Räknardata sammanställd per dag, vecka eller månad. Det enklaste sättet att svara på "hur går det?" — utan att logga in.',
         bullets: [
-          'Besöksantal med jämförelse mot typisk vecka',
-          'Topp-timmar och dagar',
-          'Köhändelser och deras varaktighet',
-          'Per butik eller aggregerat över kedjan',
+          'Besöksantal per butik med jämförelse mot typisk vecka',
+          'Köhändelser, varaktighet och åtgärd',
+          'Topp-timmar och peak-dagar',
+          'Multi-butiksvy aggregerar hela kedjan',
         ],
       },
       {
-        title: 'HACCP-rapport för egenkontrollen',
-        body: 'Klar för Livsmedelsverkets revision — alla sensorer, alla avvikelser, alla åtgärder. PDF som du laddar ned eller mejlar vidare.',
+        title: 'Beläggningsrapport',
+        body: 'Hur fullt är det i butiken över dygnet och veckan? Reveal sammanställer beläggningen mot din kapacitet och visar var och när du toppar.',
+        bullets: [
+          'Genomsnittlig och peak-beläggning per period',
+          'Kapacitetsutnyttjande i %',
+          'Distribution: hur ofta du har 20, 40, 60 personer',
+          'Tröskel-överskridanden tidsstämplade',
+        ],
+      },
+      {
+        title: 'HACCP-temperaturrapport',
+        body: 'Klar för Livsmedelsverkets revision — alla kylar och frysar, alla avvikelser, alla åtgärder. PDF som du laddar ned eller mejlar vidare.',
         bullets: [
           'Tidsstämplad temperaturlogg per kyl/frys',
           'Avvikelser med start, peak, varaktighet och åtgärd',
@@ -80,8 +90,17 @@ export const sv: SpokeContent = {
         ],
       },
       {
+        title: 'Miljö- och sensorrapport',
+        body: 'Allt utanför HACCP — rumstemperatur, luftfuktighet, anpassade sensorer. Användbart för facility management och arbetsmiljö-uppföljning.',
+        bullets: [
+          'Per sensor och per butik',
+          'Tröskel-överskridanden och stale-händelser',
+          'Mätarens uptime — vilka sensorer rapporterar och vilka inte',
+        ],
+      },
+      {
         title: 'Anpassade perioder och format',
-        body: 'Revisorn vill ha Q1? Chefen vill ha 90 dagar bakåt? Exportera vad som helst, när som helst — utan att vänta på nästa schemalagda runda.',
+        body: 'Revisorn vill ha Q1? Chefen vill ha 90 dagar bakåt? Välj sektioner, period och butiker — exportera vad som helst, när som helst.',
       },
       {
         title: 'Arkiv i appen',
@@ -115,7 +134,15 @@ export const sv: SpokeContent = {
       },
       {
         q: 'Kan jag uppdatera mall eller layout?',
-        a: 'Ja, för anpassade rapporter. Du väljer vilka sektioner som ingår, vilken period och vilka butiker. Standardrapporterna (handel + HACCP) har en fast layout som passar 90% av användarna.',
+        a: 'Ja, för anpassade rapporter. Du väljer vilka sektioner som ingår, vilken period och vilka butiker. Standardrapporterna har en fast layout som passar 90% av användarna.',
+      },
+      {
+        q: 'Får alla sensorer en egen rapport?',
+        a: 'Ja. Räknare (besökare, kö, beläggning), miljösensorer (temperatur, luftfuktighet) och anpassade sensorer kan alla rapporteras separat eller bakas in i en samlad rapport. Du väljer per rapport vad som ingår.',
+      },
+      {
+        q: 'Är beläggningsrapporten relevant för andra än livsmedelsbutiker?',
+        a: 'Absolut. Vilken plats med kapacitetstak — köpcenter, museum, gym, restaurang — använder samma siffror för säkerhet, planering och bemanning.',
       },
     ],
   },
@@ -152,7 +179,7 @@ export const en: SpokeContent = {
     title: 'The report writes itself.',
     titleHighlight: 'You just forward it on.',
     subtitle:
-      "Reveal emails your weekly trading and HACCP reports to the right person on the right day. No manual summaries, no paper folder, no panic on Friday afternoon.",
+      'Reveal emails visitor stats, occupancy, HACCP temperatures and every sensor to the right person on the right day. No manual summaries, no paper folder, no panic on Friday afternoon.',
     ctaPrimary: 'Start free trial',
     ctaSecondary: 'See how it works',
     trialNote: '30-day free trial · no new hardware · cancel anytime',
@@ -160,9 +187,9 @@ export const en: SpokeContent = {
   problem: {
     title: 'One hour. Every week. Per site.',
     body: [
-      "Manual weekly reports eat an hour of every store manager's week. Multiply by fourteen sites — that's two working days a month gone to Excel.",
-      "The HACCP folder is worse. When the inspector walks in, you need three months of temperature logs per fridge. Is the folder up to date? Is it even in the right place?",
-      'Both problems are solved by the same thing: reports that write themselves and land in your inbox without anyone needing to remember.',
+      "Manual weekly reports eat an hour of every store manager's week. Visitor numbers need totaling. Occupancy compared with last month. The HACCP folder updated. Multiply by fourteen sites — that's two working days a month gone to Excel.",
+      "And the report is still just a snapshot. Next week the same job starts over.",
+      'All of it is solved by the same thing: reports that write themselves — for every counter, every sensor — and land in the right inbox without anyone needing to remember.',
     ],
   },
   howItWorks: {
@@ -171,7 +198,7 @@ export const en: SpokeContent = {
     steps: [
       {
         title: 'Pick a report type',
-        body: 'Trading report, HACCP temperature report or a custom summary. Per site or across the whole chain.',
+        body: 'Visitor report, occupancy, queue, HACCP temperatures, environmental sensors, or a custom summary. Per site or across the whole chain.',
       },
       {
         title: 'Set recipients and frequency',
@@ -184,22 +211,32 @@ export const en: SpokeContent = {
     ],
   },
   features: {
-    eyebrow: 'Features',
-    title: 'Everything your reporting needs',
+    eyebrow: 'Report types',
+    title: 'A report for every sensor and counter',
     items: [
       {
-        title: 'Trading report — weekly or monthly',
-        body: 'Visitors, queue, peak hours, comparison vs. the previous period. Per site or aggregated across the chain.',
+        title: 'Visitor & queue report',
+        body: 'Counter data summarised by day, week or month. The simplest way to answer "how are we doing?" without logging in.',
         bullets: [
-          'Visitor counts compared against a typical week',
-          'Peak hours and days',
-          'Queue events and their duration',
-          'Per site or aggregated across the chain',
+          'Visitor counts per site compared against a typical week',
+          'Queue events, duration and action taken',
+          'Peak hours and busiest days',
+          'Multi-site view aggregates the whole chain',
         ],
       },
       {
-        title: 'HACCP report for food-safety compliance',
-        body: "Ready for inspection — every sensor, every breach, every action. A PDF you download or forward on.",
+        title: 'Occupancy report',
+        body: 'How full is the store across the day and week? Reveal summarises occupancy against your capacity and shows where and when you peak.',
+        bullets: [
+          'Average and peak occupancy per period',
+          'Capacity utilisation in %',
+          'Distribution: how often you have 20, 40, 60 people',
+          'Threshold breaches timestamped',
+        ],
+      },
+      {
+        title: 'HACCP temperature report',
+        body: "Ready for food-safety inspection — every fridge and freezer, every breach, every action. A PDF you download or forward on.",
         bullets: [
           'Timestamped temperature log per fridge / freezer',
           'Breaches with start, peak, duration, resolution',
@@ -208,8 +245,17 @@ export const en: SpokeContent = {
         ],
       },
       {
+        title: 'Environmental & sensor report',
+        body: 'Everything outside HACCP — ambient temperature, humidity, custom sensors. Useful for facility management and workplace-environment follow-up.',
+        bullets: [
+          'Per sensor and per site',
+          'Threshold breaches and stale events',
+          'Sensor uptime — which ones are reporting and which are not',
+        ],
+      },
+      {
         title: 'Custom periods and formats',
-        body: 'Auditor wants Q1? Head office wants 90 days back? Export anything, anytime — without waiting for the next scheduled run.',
+        body: 'Auditor wants Q1? Head office wants 90 days back? Pick sections, period and sites — export anything, anytime.',
       },
       {
         title: 'Archive in the app',
@@ -243,7 +289,15 @@ export const en: SpokeContent = {
       },
       {
         q: 'Can I customise the template?',
-        a: "Yes, for custom reports. You pick the sections, the period and the sites. The standard reports (trading + HACCP) have a fixed layout that fits 90% of users.",
+        a: "Yes, for custom reports. You pick the sections, the period and the sites. The standard reports have a fixed layout that fits 90% of users.",
+      },
+      {
+        q: 'Does every sensor get its own report?',
+        a: 'Yes. Counters (visitors, queue, occupancy), environmental sensors (temperature, humidity) and custom sensors can each be reported separately or rolled into a combined report. You choose per report what to include.',
+      },
+      {
+        q: 'Is the occupancy report relevant outside grocery?',
+        a: 'Absolutely. Any venue with a capacity cap — shopping centres, museums, gyms, restaurants — uses the same numbers for safety, planning and staffing.',
       },
     ],
   },
