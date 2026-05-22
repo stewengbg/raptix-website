@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://www.raptix.se',
+  site: 'https://raptix.se',
 
   i18n: {
     defaultLocale: 'sv',
@@ -32,7 +32,7 @@ export default defineConfig({
       serialize(item) {
         // Strip trailing slash for cleaner matching
         const path = item.url
-          .replace('https://www.raptix.se', '')
+          .replace('https://raptix.se', '')
           .replace(/\/$/, '');
 
         // Homepage — highest authority
