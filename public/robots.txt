@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
+# Pitch deck — accessible by URL only (not promoted via navigation or sitemap).
+# Disallowed so search engines don't surface it as a search result.
+Disallow: /raptix-reveal-pitch.pdf
+
 Sitemap: https://raptix.se/sitemap-index.xml
