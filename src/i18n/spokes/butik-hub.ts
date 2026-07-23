@@ -88,6 +88,12 @@ export const sv: HubContent = {
       href: '/butik/skarmar/',
       icon: '📺',
     },
+    {
+      title: 'Personräknare butik',
+      body: 'Räkna besökare via dina befintliga Alta-kameror — utan ny hårdvara. Jämförelse mot fristående räknare.',
+      href: '/butik/personraknare/',
+      icon: '🚶',
+    },
   ],
   finalCta: {
     title: 'Kom igång på en kväll',

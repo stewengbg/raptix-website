@@ -130,14 +130,14 @@ export const sv: SpokeContent = {
     eyebrow: 'Utforska mer',
     items: [
       {
+        title: 'Personräknare butik',
+        href: '/butik/personraknare/',
+        body: 'Räkna besökare med dina befintliga Alta-kameror — jämförelse mot fristående räknare och kostnad.',
+      },
+      {
         title: 'Köhantering & larm',
         href: '/butik/kohantering-larm/',
         body: 'Mät kassakön i realtid och få push-larm.',
-      },
-      {
-        title: 'In-store skärmar',
-        href: '/butik/skarmar/',
-        body: 'TV-redo dashboards utan inloggning.',
       },
       {
         title: 'Rapporter',

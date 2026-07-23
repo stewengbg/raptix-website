@@ -1,0 +1,103 @@
+---
+import type { Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+// Bilingual for pattern consistency, but this page only renders in SV
+// today. EN copy is here as a fallback in case the page is expanded later.
+const t = {
+  sv: {
+    eyebrow: 'Jämförelse',
+    title: 'Fristående personräknare vs Reveal via Alta-kameror',
+    lead: 'Samma resultat — besökssiffror per timme, dag, vecka. Väldigt olika kostnad och installation.',
+    headers: ['', 'Fristående personräknare', 'Reveal via Alta-kameror'],
+    rows: [
+      ['Ny hårdvara', 'Ja, per entré (IR-strålar eller stereokamera)', 'Nej — använder befintliga Alta-kameror'],
+      ['Installation', 'Håltagning, kabeldragning, kalibrering', '15 min via webben'],
+      ['Hårdvarukostnad', '500–2 000 EUR per entré', '0 EUR'],
+      ['Löpande kostnad', 'Årslicens per enhet', '50 USD/mån per butik — allt ingår'],
+      ['Time-to-first-data', '1–2 veckor efter beställning', '15 minuter efter anslutning'],
+      ['Historisk data', 'Från installationsdag', 'Importeras från Alta vid start'],
+      ['Extra funktioner', 'Bara räkning', 'Räkning + kö-larm + HACCP + skärmar + rapporter'],
+      ['Passar bäst när', 'Ingen befintlig kamera vid entrén', 'Butiken redan kör Avigilon Alta'],
+    ] as const,
+    footNote: 'Fristående räknare kan fortfarande vara rätt om butiken saknar Alta-kameror vid entrén eller behöver specialteknik som LiDAR. För de flesta är kamera-baserad räkning både snabbare och billigare.',
+    revealBadge: 'Rekommenderat',
+  },
+  en: {
+    eyebrow: 'Comparison',
+    title: 'Standalone people counter vs Reveal via Alta cameras',
+    lead: "Same outcome — visitor counts per hour, day, week. Very different cost and install.",
+    headers: ['', 'Standalone counter', 'Reveal via Alta cameras'],
+    rows: [
+      ['New hardware', 'Yes, per entrance (IR beams or stereo camera)', 'No — uses existing Alta cameras'],
+      ['Installation', 'Ceiling drilling, cabling, calibration', '15 minutes in the browser'],
+      ['Hardware cost', '500–2,000 EUR per entrance', '0 EUR'],
+      ['Ongoing cost', 'Annual licence per device', '$50/month per site — everything included'],
+      ['Time-to-first-data', '1–2 weeks after ordering', '15 minutes after connect'],
+      ['Historic data', 'From install day', 'Imported from Alta on connect'],
+      ['Extra features', 'Counting only', 'Counting + queue alerts + HACCP + screens + reports'],
+      ['Best when', 'No existing camera at the entrance', 'You already run Avigilon Alta'],
+    ] as const,
+    footNote: "Standalone counters can still be the right choice if there's no Alta camera at the entrance or you need specialist tech like LiDAR. For most retailers already on Alta, camera-based counting is faster and cheaper.",
+    revealBadge: 'Recommended',
+  },
+}[locale];
+---
+
+<div>
+  <div class="text-center mb-6">
+    <p class="text-xs font-bold uppercase tracking-widest text-blue-700">{t.eyebrow}</p>
+    <h3 class="mt-1.5 text-2xl font-extrabold tracking-tight">{t.title}</h3>
+    <p class="mt-2 text-sm text-gray-600 max-w-2xl mx-auto">{t.lead}</p>
+  </div>
+
+  <div class="browser-frame">
+    <div class="browser-bar">
+      <span class="dot dot-r"></span>
+      <span class="dot dot-y"></span>
+      <span class="dot dot-g"></span>
+    </div>
+    <div class="p-4 md:p-6 bg-white overflow-x-auto">
+      <table class="w-full text-sm border-collapse min-w-[36rem]">
+        <thead>
+          <tr>
+            <th class="text-left py-3 pr-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 w-[28%]">
+              {t.headers[0]}
+            </th>
+            <th class="text-left py-3 px-3 text-[11px] font-bold uppercase tracking-wider text-gray-500 border-b-2 border-gray-200">
+              {t.headers[1]}
+            </th>
+            <th class="text-left py-3 px-3 text-[11px] font-bold uppercase tracking-wider text-blue-700 border-b-2 border-blue-600 bg-blue-50/40 relative">
+              {t.headers[2]}
+              <span class="absolute -top-2 right-2 text-[8px] font-bold uppercase tracking-widest px-1.5 py-0.5 rounded-full bg-blue-600 text-white">
+                {t.revealBadge}
+              </span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {t.rows.map(([label, standalone, reveal]) => (
+            <tr>
+              <td class="py-2.5 pr-3 font-semibold text-gray-700 border-b border-gray-100 align-top">
+                {label}
+              </td>
+              <td class="py-2.5 px-3 text-gray-600 border-b border-gray-100 align-top">
+                {standalone}
+              </td>
+              <td class="py-2.5 px-3 text-gray-900 font-medium border-b border-gray-100 align-top bg-blue-50/40">
+                {reveal}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <p class="text-xs text-gray-500 italic text-center mt-4 max-w-2xl mx-auto">{t.footNote}</p>
+</div>
