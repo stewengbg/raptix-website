@@ -1,0 +1,135 @@
+---
+import type { Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+const t = {
+  sv: {
+    appName: 'Reveal',
+    time: '14:32',
+    alertBadge: 'KRITISKT LARM',
+    alertTitle: 'Kyl 3 · Ägg',
+    alertBody: 'Temperatur 8,4°C · gräns 7,0°C',
+    alertMeta: 'Bekräftad över 5 min · hysteres passerad',
+    ctaAcknowledge: 'Kvittera',
+    ctaViewLog: 'Öppna händelselogg',
+    contextHeader: 'Bakgrund',
+    contextRows: [
+      ['08:00', '4,2°C', 'Inom gräns'],
+      ['12:15', '5,1°C', 'Inom gräns'],
+      ['14:27', '7,8°C', 'Över gräns · trend uppåt'],
+      ['14:32', '8,4°C', 'Larm skickat'],
+    ] as const,
+    footNote: 'Reveal filtrerar bort korta glapp med hysteres — larmet skickas först när trenden är verklig.',
+  },
+  en: {
+    appName: 'Reveal',
+    time: '14:32',
+    alertBadge: 'CRITICAL ALERT',
+    alertTitle: 'Fridge 3 · Eggs',
+    alertBody: 'Temperature 8.4°C · limit 7.0°C',
+    alertMeta: 'Confirmed over 5 min · hysteresis passed',
+    ctaAcknowledge: 'Acknowledge',
+    ctaViewLog: 'Open event log',
+    contextHeader: 'Context',
+    contextRows: [
+      ['08:00', '4.2°C', 'In range'],
+      ['12:15', '5.1°C', 'In range'],
+      ['14:27', '7.8°C', 'Over limit · trending up'],
+      ['14:32', '8.4°C', 'Alert sent'],
+    ] as const,
+    footNote: 'Reveal filters out short spikes with hysteresis — the alert is sent only when the trend is real.',
+  },
+}[locale];
+---
+
+<div class="grid md:grid-cols-2 gap-6 items-center">
+  <!-- Phone-style notification card -->
+  <div class="mx-auto max-w-sm w-full">
+    <div class="rounded-3xl border-4 border-gray-900 bg-gray-900 shadow-2xl overflow-hidden">
+      <!-- status bar -->
+      <div class="flex items-center justify-between px-5 py-2 text-white text-xs font-semibold">
+        <span>{t.time}</span>
+        <div class="flex items-center gap-1 text-[10px] opacity-70">
+          <span>●●●●</span>
+          <span>5G</span>
+          <span>82%</span>
+        </div>
+      </div>
+      <!-- notification body on dark wallpaper -->
+      <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-4 pb-8">
+        <div class="rounded-2xl bg-white/95 backdrop-blur p-4 shadow-xl">
+          <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center gap-2">
+              <span class="w-6 h-6 rounded-md bg-red-500 text-white text-[10px] font-bold flex items-center justify-center">!</span>
+              <span class="text-xs font-semibold text-gray-500">{t.appName}</span>
+            </div>
+            <span class="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-red-100 text-red-700">
+              {t.alertBadge}
+            </span>
+          </div>
+          <p class="font-bold text-gray-900 text-sm leading-tight">{t.alertTitle}</p>
+          <p class="text-red-700 font-semibold text-sm mt-1">{t.alertBody}</p>
+          <p class="text-[11px] text-gray-500 mt-1.5 italic">{t.alertMeta}</p>
+          <div class="mt-3 flex gap-2">
+            <button class="flex-1 text-xs font-semibold rounded-lg bg-red-600 text-white py-2">
+              {t.ctaAcknowledge}
+            </button>
+            <button class="flex-1 text-xs font-semibold rounded-lg bg-gray-100 text-gray-700 py-2">
+              {t.ctaViewLog}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Context / trend table -->
+  <div class="browser-frame">
+    <div class="browser-bar">
+      <span class="dot dot-r"></span>
+      <span class="dot dot-y"></span>
+      <span class="dot dot-g"></span>
+    </div>
+    <div class="p-5 bg-white">
+      <p class="text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-3">{t.contextHeader}</p>
+      <table class="w-full text-xs">
+        <tbody>
+          {t.contextRows.map(([time, value, status], i) => {
+            const isAlert = i === t.contextRows.length - 1;
+            const isWarn = status.toString().toLowerCase().includes('över') || status.toString().toLowerCase().includes('over');
+            return (
+              <tr class:list={[isAlert ? 'bg-red-50' : '']}>
+                <td class="py-2 pr-3 font-mono text-gray-500 border-b border-gray-100">
+                  {time}
+                </td>
+                <td
+                  class:list={[
+                    'py-2 pr-3 font-bold border-b border-gray-100',
+                    isAlert ? 'text-red-700' : isWarn ? 'text-amber-600' : 'text-gray-700',
+                  ]}
+                >
+                  {value}
+                </td>
+                <td
+                  class:list={[
+                    'py-2 text-right font-semibold text-[11px] border-b border-gray-100',
+                    isAlert ? 'text-red-700' : isWarn ? 'text-amber-600' : 'text-emerald-600',
+                  ]}
+                >
+                  {status}
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<p class="text-xs text-gray-400 text-center mt-4 italic max-w-2xl mx-auto">{t.footNote}</p>

@@ -115,14 +115,14 @@ export const sv: SpokeContent = {
     eyebrow: 'Utforska mer',
     items: [
       {
+        title: 'Utnyttja säkerhetskameror till besöksräkning',
+        href: '/anvand-sakerhetskameror-besoksanalys/',
+        body: 'Bredare titt på vad dina Alta-kameror redan mäter — besökare, kö, beläggning och sensorvärden.',
+      },
+      {
         title: 'Besöksstatistik & analys',
         href: '/butik/besoksstatistik/',
         body: 'Djupare vy på hur besöksdatan visualiseras — heatmaps, jämförelser och prognoser.',
-      },
-      {
-        title: 'Köhantering & larm',
-        href: '/butik/kohantering-larm/',
-        body: 'Mät kassakön i realtid och få push-larm innan kunder lämnar.',
       },
       {
         title: 'Alla funktioner för butiken',

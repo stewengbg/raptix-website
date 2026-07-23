@@ -121,6 +121,11 @@ export const sv: SpokeContent = {
     eyebrow: 'Utforska mer',
     items: [
       {
+        title: 'Bemanningsplanering butik utifrån besök',
+        href: '/butik/bemanningsplanering/',
+        body: 'Använd samma besöksmönster för att schemalägga personalen på rätt timmar.',
+      },
+      {
         title: 'Rapporter',
         href: '/butik/rapporter/',
         body: 'Schemalagda PDF-rapporter via mejl. Inga manuella sammanställningar.',
@@ -129,11 +134,6 @@ export const sv: SpokeContent = {
         title: 'HACCP & egenkontroll',
         href: '/haccp/',
         body: 'Temperaturövervakning, audit-trail och färdiga rapporter.',
-      },
-      {
-        title: 'Alla funktioner',
-        href: '/butik/',
-        body: 'Se hela Reveal-paketet för din butik.',
       },
     ],
   },

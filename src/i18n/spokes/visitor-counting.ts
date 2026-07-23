@@ -135,9 +135,9 @@ export const sv: SpokeContent = {
         body: 'Räkna besökare med dina befintliga Alta-kameror — jämförelse mot fristående räknare och kostnad.',
       },
       {
-        title: 'Köhantering & larm',
-        href: '/butik/kohantering-larm/',
-        body: 'Mät kassakön i realtid och få push-larm.',
+        title: 'Konverteringsgrad butik — mäta',
+        href: '/butik/konverteringsgrad/',
+        body: 'Koppla besöksdatan mot försäljningen och räkna ut konvertering per timme, dag och butik.',
       },
       {
         title: 'Rapporter',

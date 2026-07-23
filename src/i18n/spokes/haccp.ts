@@ -139,6 +139,16 @@ export const sv: SpokeContent = {
     eyebrow: 'Utforska mer',
     items: [
       {
+        title: 'Temperaturlarm kyl frys sms',
+        href: '/haccp/temperaturlarm-kyl-frys/',
+        body: 'Push-larm direkt när kylen eller frysen går över gräns — utan falsklarm.',
+      },
+      {
+        title: 'Egenkontroll temperatur mall livsmedel',
+        href: '/haccp/egenkontroll-temperatur-mall/',
+        body: 'Ersätt papperspärmen med automatisk loggning och färdig PDF varje vecka.',
+      },
+      {
         title: 'Rapporter',
         href: '/butik/rapporter/',
         body: 'Schemalagda handels- och HACCP-rapporter via mejl.',
@@ -147,11 +157,6 @@ export const sv: SpokeContent = {
         title: 'Flera butiker / kedjor',
         href: '/kedjor/',
         body: 'Multi-butiks-efterlevnad i en vy för kvalitetsansvariga.',
-      },
-      {
-        title: 'Reveal för din butik',
-        href: '/butik/',
-        body: 'Se hela paketet — besökare, kö, skärmar, rapporter.',
       },
     ],
   },

@@ -94,6 +94,18 @@ export const sv: HubContent = {
       href: '/butik/personraknare/',
       icon: '🚶',
     },
+    {
+      title: 'Konverteringsgrad butik — mäta',
+      body: 'Koppla besöksdata mot försäljningen. Räkna ut hur många besökare som blir kunder per timme, dag och butik.',
+      href: '/butik/konverteringsgrad/',
+      icon: '🎯',
+    },
+    {
+      title: 'Bemanningsplanering utifrån besök',
+      body: 'Schemalägg personalen på riktiga besöksmönster med hour-of-week-heatmap och väderkorrelation.',
+      href: '/butik/bemanningsplanering/',
+      icon: '📅',
+    },
   ],
   finalCta: {
     title: 'Kom igång på en kväll',
