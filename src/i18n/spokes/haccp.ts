@@ -180,6 +180,7 @@ export const en: SpokeContent = {
       "In practice: someone forgets a log. When a breach happens, no action is recorded. When the inspector arrives, the folder is half-empty and you're in for an awkward conversation.",
       'Reveal solves the whole cycle — logs 24/7, alerts on breach, documents the action, and delivers <a href="/en/retail/reports/">the automated PDF report</a> the inspector wants.',
       'The same Alta connection also powers the rest of your operation. Reveal is <a href="/en/retail/">the full retail platform for your store</a>: <a href="/en/retail/visitor-counting/">live visitor counting</a> from the cameras you already have, <a href="/en/retail/queue-alerts/">checkout queue alerts</a>, <a href="/en/retail/in-store-screens/">TV-ready in-store dashboards</a> for the break room, and <a href="/en/multi-site/">chain-wide multi-site fleet dashboards</a> for district managers.',
+      'For Swedish teams preparing for Livsmedelsverket inspections, we have a dedicated guide to <a href="/haccp/egenkontroll-temperatur-mall/">the Swedish egenkontroll temperature template that replaces the paper folder</a> — same automatic Alta logging, formatted for local compliance.',
     ],
   },
   howItWorks: {

@@ -36,6 +36,7 @@ export const sv: SpokeContent = {
       'Manuell räkning är opålitlig. Excel-export från Avigilon är jobbig. Och ingen vet vad "typiskt" är — för "typiskt" beror på veckodag, väder, månad, och fyra andra saker.',
       'Reveal räknar åt dig, jämför mot fyra veckors median för exakt samma veckodag och tidpunkt, och säger "ja, det här är ovanligt" eller "nej, det här är normalt".',
       'Samma anslutning driver också resten av butikens vardag. Reveal är <a href="/en/retail/">hela produktpaketet för butik</a>: <a href="/en/retail/queue-alerts/">kölarm i kassan</a> när kön växer, <a href="/en/retail/in-store-screens/">TV-skärmar i personalrummet</a> som visar dagens takt live, <a href="/en/retail/reports/">automatiska veckorapporter</a> som mejlas till rätt person, och <a href="/en/multi-site/">multi-butiksvyn för kedjor</a> för distriktschefen.',
+      'Om butiken också hanterar livsmedel driver samma Alta-anslutning även <a href="/haccp/egenkontroll-temperatur-mall/">egenkontroll temperatur mall livsmedel</a> — automatisk loggning av kyl- och frystemperaturer med färdig PDF varje vecka.',
     ],
   },
   howItWorks: {
